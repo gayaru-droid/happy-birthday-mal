@@ -38,12 +38,12 @@ h1{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-style:i
 .it{position:absolute;left:0;top:0;font-size:1.9rem;line-height:1;pointer-events:none;will-change:transform}
 #basket{position:absolute;left:0;bottom:6px;font-size:2.6rem;line-height:1;pointer-events:none}
 .row{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:1.25rem}
-button.pill{font:inherit;font-weight:500;letter-spacing:.02em;background:var(--accent);color:var(--accent-ink);border:1px solid var(--gold);border-radius:999px;padding:.75rem 2rem;cursor:pointer;box-shadow:0 4px 18px rgba(179,34,79,.25)}
+button.pill,a.pill{font:inherit;font-weight:500;letter-spacing:.02em;background:var(--accent);color:var(--accent-ink);border:1px solid var(--gold);border-radius:999px;padding:.75rem 2rem;cursor:pointer;box-shadow:0 4px 18px rgba(179,34,79,.25)}
 button.link{font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:.4rem}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:1.5rem;padding:1.4rem 1.5rem 1.25rem;margin-top:1.5rem;width:100%;box-shadow:0 10px 36px rgba(120,30,70,.14)}
 .orn{width:22px;height:20px;margin:0 auto .6rem;display:block}
-#wish{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.45rem;line-height:1.4;margin:0 0 1rem;min-height:7.5em;display:flex;align-items:center;justify-content:center}
+#wish{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.45;margin:0 0 1rem;min-height:12em;display:flex;align-items:center;justify-content:center}
 #wish.swap{animation:swap .5s ease-out}
 @keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .count{font-size:.85rem;color:var(--muted);margin:0 0 .9rem}
@@ -59,18 +59,40 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .pop.up{color:var(--accent)}
 .pop.dn{color:#2f7fd1}
 .pa{position:absolute;font-size:.95rem;line-height:1;pointer-events:none;z-index:2}
+#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;background:rgba(18,8,40,.28);opacity:0;transition:opacity 1.2s}
+body.storm #rain{opacity:1}
+.rd{position:absolute;top:-30px;width:1.5px;height:22px;background:linear-gradient(transparent,rgba(170,195,255,.6));animation:rainfall linear infinite}
+@keyframes rainfall{to{transform:translateY(115vh)}}
+#bolt{position:fixed;inset:0;pointer-events:none;z-index:3;background:#eef2ff;opacity:0}
+.secret{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.25rem;letter-spacing:.08em;line-height:1.3;color:var(--accent);margin:0 0 .6rem;min-height:2.6em}
+#hint{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);width:80%;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:1.4rem;line-height:1.3;color:var(--muted);pointer-events:none;animation:hintp 1.6s ease-in-out infinite alternate}
+@keyframes hintp{to{opacity:.4}}
+a.pill{display:inline-block;text-decoration:none}
+a.pill:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+button.pill.alt{background:transparent;color:var(--ink);box-shadow:none}
+.btns{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.igmsg{font-size:.9rem;color:var(--muted);margin:.9rem 0 0;user-select:text}
+#cake.eat{transform-origin:50% 70%;animation:eat 1.7s ease-in forwards}
+@keyframes eat{0%{transform:scale(1)}18%{transform:scale(1.25) translateY(-6px)}30%{transform:scale(1.1)}48%{transform:scale(1.6) translateY(-4px)}60%{transform:scale(1.4)}100%{transform:scale(3.4) translateY(30px);opacity:0}}
+.modal{position:fixed;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(40,10,30,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.mbox{background:var(--bg1);border:1px solid var(--line);border-radius:1.5rem;padding:1.75rem 1.5rem 1.5rem;max-width:22rem;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:mpop .5s cubic-bezier(.2,1.2,.3,1)}
+@keyframes mpop{from{opacity:0;transform:scale(.85) translateY(12px)}to{opacity:1;transform:none}}
+.mbox h2{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:2rem;line-height:1.1;margin:0 0 .6rem}
+.mbox p{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.4rem;line-height:1.4;margin:0 0 1.25rem}
 #basket.bounce{animation:bounce .28s}
 #basket.hurt{animation:hurt .4s}
 @keyframes bounce{50%{scale:1.3}}
 @keyframes hurt{25%{rotate:-18deg}60%{rotate:14deg}}
 #flash{position:fixed;inset:0;pointer-events:none;z-index:6;background:radial-gradient(circle at 50% 35%,#ffd36b,#ff5a1f 45%,transparent 75%);opacity:0}
-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
-@media (prefers-reduced-motion:reduce){.cd.on .f,#arena.shake,#wish.swap,#got.bad,#cake.boom,#basket.bounce,#basket.hurt{animation:none}#petals{display:none}}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9}
+@media (prefers-reduced-motion:reduce){.cd.on .f,#arena.shake,#wish.swap,#got.bad,#cake.boom,#cake.eat,.mbox,#basket.bounce,#basket.hurt,#hint{animation:none}.rd{display:none}#petals{display:none}}
 </style>
 </head>
 <body>
 <div id="glow"></div>
 <div id="flash"></div>
+<div id="rain" aria-hidden="true"></div>
+<div id="bolt" aria-hidden="true"></div>
 <div id="petals" aria-hidden="true"></div>
 <canvas id="fx" aria-hidden="true"></canvas>
 <button id="mute" aria-label="Mute music" aria-pressed="false">🔊</button>
@@ -104,7 +126,8 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   <div id="game" hidden>
     <div class="hud"><span id="rnd"></span><span id="got"></span><span id="lives" aria-label="Candles left"></span></div>
     <div class="bar"><i id="bar"></i></div>
-    <div id="arena" aria-label="Game area. Drag, or use the arrow keys, to move the cake."><span id="basket">🎂</span></div>
+    <p class="secret" id="secret" aria-live="off"></p>
+    <div id="arena" aria-label="Game area. Drag, or use the arrow keys, to move the cake."><span id="hint">👆 Drag to move your cake<br>and catch the hearts 💖</span><span id="basket">🎂</span></div>
   </div>
 
   <p class="note" id="note" hidden></p>
@@ -126,24 +149,54 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
     <p id="wish" aria-live="polite"></p>
     <p class="count" id="count"></p>
-    <button class="pill" id="next">Next wish</button>
+    <div class="btns"><a class="pill" id="ig" href="#" target="_blank" rel="noopener" hidden>Reply on Instagram 💌</a><button class="pill" id="next">Next wish</button></div>
+    <p class="igmsg" id="igmsg" hidden></p>
   </section>
 </main>
+<div id="fail" class="modal" role="dialog" aria-modal="true" aria-labelledby="xtitle" hidden>
+  <div class="mbox">
+    <h2 id="xtitle">Boom! 🔥</h2>
+    <p id="xtext"></p>
+    <button class="pill" id="xretry">Try again</button>
+  </div>
+</div>
+<div id="final" class="modal" role="dialog" aria-modal="true" aria-labelledby="ftitle" hidden>
+  <div class="mbox">
+    <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
+    <h2 id="ftitle">One last wish</h2>
+    <p id="ftext"></p>
+    <button class="pill" id="fclose">Close</button>
+  </div>
+</div>
 
 <script>
 (function(){
   var GOAL=10,SKIP_AFTER=2;
+  var IG_USER="your_instagram_username",IG_TEXT="Yes, I accept your humble request 💌";
+  var SECRET="It started so quietly. We both began working at the same office, two strangers in a busy open-plan room, each lost in our own routine, neither of us paying the other any attention.";
+  var REQUEST="Mal, will you let me walk beside you into this next chapter, as more than just a friend? If your heart says yes, please react with a white heart 🤍",FINAL="Thank you for sharing this journey with me, Mal. Happy 20th birthday!";
   var wishes=[
-    "I hope today is wrapped in everything you love: good food, good people, and your favorite song at exactly the right moment.",
-    "Your laugh is one of my favorite sounds. I hope you hear it often this year.",
-    "May your twenties begin gently, and may every wish you ever made on candles like these come true.",
-    "And if you’re wondering: someone is quietly, completely glad you were born."
+    "Then one day I heard your voice for the first time, and somehow that single moment made my entire day. After that, your eyes were never just eyes, and your smile was never just a smile. They became the best part of every day I spent there.",
+    "For a while I only watched from far away, too nervous to make a move. My feelings grew a little stronger every day, and every day I found a new reason not to say hello.",
+    "Eventually I gathered every bit of courage I had and sent you a message. Those first conversations were full of nerves on my side. I was only trying to build a small bridge to you, while you were busy with your office days and your life at the hostel.",
+    "Then my time at the office was coming to an end, because I was getting ready for a big new chapter: a BSc in Artificial Intelligence at the University of Moratuwa. I was afraid of losing you completely, so I told you honestly how much I care. You felt unsure and asked for some time, and ever since, I have been waiting and thinking of you.",
+    "Now I am a university undergraduate in Gampaha District, but the not knowing has felt heavy on my heart. I have learned that living on hope that might be false is harder than hearing the truth. Whatever your answer is, yes or no, I would be grateful for a clear one, so I can find peace. If we can talk, please react to my message with a white heart 🤍"
+  ];
+  /* Your earlier six-page story is integrated into the secret reveal & wishes above */
+  var savedStory=[
+    "It started so quietly. We both began working at the same office, two strangers in a busy open-plan room, each lost in our own routine, neither of us paying the other any attention.",
+    "Then one day I heard your voice for the first time, and somehow that single moment made my entire day. After that, your eyes were never just eyes, and your smile was never just a smile. They became the best part of every day I spent there.",
+    "For a while I only watched from far away, too nervous to make a move. My feelings grew a little stronger every day, and every day I found a new reason not to say hello.",
+    "Eventually I gathered every bit of courage I had and sent you a message. Those first conversations were full of nerves on my side. I was only trying to build a small bridge to you, while you were busy with your office days and your life at the hostel.",
+    "Then my time at the office was coming to an end, because I was getting ready for a big new chapter: a BSc in Artificial Intelligence at the University of Moratuwa. I was afraid of losing you completely, so I told you honestly how much I care. You felt unsure and asked for some time, and ever since, I have been waiting and thinking of you.",
+    "Now I am a university undergraduate in Gampaha District, but the not knowing has felt heavy on my heart. I have learned that living on hope that might be false is harder than hearing the truth. Whatever your answer is, yes or no, I would be grateful for a clear one, so I can find peace. If we can talk, please react to my message with a white heart 🤍"
   ];
   var $=function(id){return document.getElementById(id);};
   var cake=$("cake"),game=$("game"),arena=$("arena"),basket=$("basket"),rndEl=$("rnd"),gotEl=$("got"),livesEl=$("lives"),bar=$("bar"),
       title=$("title"),sub=$("sub"),act=$("act"),card=$("card"),wish=$("wish"),count=$("count"),next=$("next"),glow=$("glow"),mute=$("mute");
   var c0=$("c0"),c1=$("c1");
   var state="idle",fails=0,i=0,round=1,got=0,lives=3,rsl=3,items=[],W=0,H=0,bx=0,raf=0,last=0,spawnT=0,bp=0,bTimer=0,bEnd=0,bLast=0;
+  var ig=$("ig"),igmsg=$("igmsg"),hintEl=$("hint"),rainEl=$("rain"),bolt=$("bolt"),secretEl=$("secret"),hinted=false;
   var blowEl=$("blow"),bbar=$("bbar"),bt=$("bt"),blowbtn=$("blowbtn"),flash=$("flash");
 
   /* petals */
@@ -231,7 +284,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     if(master)master.gain.value=muted?0:.22;
   });
 
-  function name(){try{return decodeURIComponent(location.hash.slice(1)).replace(/-/g," ").trim();}catch(e){return "";}}
+  function name(){try{return decodeURIComponent(location.hash.slice(1)).replace(/-/g," ").trim();}catch(e){return "Mal";}}
   function setUI(t,s,b){
     title.textContent=t;sub.textContent=s;sub.hidden=!s;
     if(b){act.textContent=b;act.hidden=false;}else{act.hidden=true;}
@@ -242,17 +295,17 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     rndEl.textContent="Round "+round+" of 2";
     gotEl.textContent="Hearts "+got+" of "+GOAL;
     livesEl.textContent="🕯️".repeat(lives);
-    bar.style.width=(got/GOAL*100)+"%";
+    bar.style.width=(got/GOAL*100)+"%";showSecret();
     glow.style.opacity=.06+.2*((round-1)*GOAL+got)/(2*GOAL);
   }
 
-  function setIdle(){
+  function setIdle(){stopStorm();
     cancelAnimationFrame(raf);clearInterval(bTimer);stopMusic();state="idle";clearItems();lives=3;blowEl.hidden=true;cake.classList.remove("blowing","boom");noteEl.hidden=!noteEl.textContent;
     game.hidden=true;cake.hidden=false;card.hidden=true;
     c0.classList.remove("on");c1.classList.remove("on");glow.style.opacity=.06;
     setUI("Catch 20 hearts to light your candles","Slide your cake to catch falling hearts 💖 and dodge the rain 💧. Every raindrop steals a heart and puts out a candle. Two rounds, ten hearts each.","Start");
   }
-  function startRound(r,retry){
+  function startRound(r,retry){if(r===2)startStorm();else stopStorm();hintEl.hidden=!(r===1&&!hinted);if(!hintEl.hidden){hinted=true;setTimeout(function(){hintEl.hidden=true;},6000);}
     round=r;got=0;if(retry)lives=Math.max(rsl,2);else if(r===1)lives=3;rsl=lives;clearItems();noteEl.hidden=true;noteEl.textContent="";
     cake.hidden=true;game.hidden=false;
     W=arena.clientWidth;H=arena.clientHeight;bx=W/2;moveBasket();
@@ -286,21 +339,21 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     }
     raf=requestAnimationFrame(loop);
   }
-  function roundDone(){
+  function roundDone(){stopStorm();
     cancelAnimationFrame(raf);clearItems();
     if(round===1){state="between";setUI("Round 1 done!","The wind is picking up, the rain is getting heavier, and hearts will drift. The candles you have left carry over.","Start round 2");}
     else win();
   }
-  function lose(){
+  function lose(){stopStorm();
     cancelAnimationFrame(raf);clearItems();state="busy";gameFails++;noteEl.textContent=RMSGS[Math.min(gameFails-1,1)];
     setUI("The rain won this round","All your candles are out. Back to the beginning…");
     setTimeout(setIdle,2600);
   }
-  function win(){
+  function win(again){stopStorm();noteEl.textContent="A secret your hearts uncovered: “"+SECRET+"”";noteEl.hidden=false;
     cancelAnimationFrame(raf);clearItems();state="won";
     game.hidden=true;cake.hidden=false;glow.style.opacity=.34;
     c0.classList.remove("on");c1.classList.remove("on");
-    setUI("You did it!","Light up the 2 and the 0, make a wish, then blow them out.");
+    setUI(again?"Try once more!":"You did it!",again?"Light the 2 and the 0 again, then blow harder this time.":"Light up the 2 and the 0, make a wish, then blow them out.");
     initAudio();startMusic();
     setTimeout(function(){c0.classList.add("on");},400);
     setTimeout(function(){c1.classList.add("on");},1000);
@@ -308,7 +361,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   }
   var BLOW=[{g:6,d:22,cap:62,t:12000},{g:6,d:30,cap:100,t:10000},{g:8,d:18,cap:100,t:14000}],blowFails=0,gameFails=0,bc=BLOW[0],noteEl=$("note");
   var RMSGS=["Oh no, the rain got all your candles! 😏 Those raindrops are clingy, but you’re quicker than that. Shake it off and show them who’s in charge.","The rain won again, but I’m not giving up on you. 😉 Keep your cake steady, stay on those hearts, and don’t let a few raindrops steal your sparkle."];
-  var MSGS=["Awww, so gentle… the candles didn’t even flinch. 😏 Don’t hold back on your birthday. Push a little harder this time.","Okay, now you’re just teasing me. 😉 Better, but I know you’ve got more power in those fingers. Don’t be so gentle, give it a little more oomph and show those candles who’s boss."];
+  var MSGS=["Awww, so gentle… the candles didn’t even flinch. 😏 Don’t hold back on your birthday. Push a little harder this time.","Okay, now you’re just teasing me. 😉 Better, but I know you’ve got more power in those fingers. Don’t be so gentle, give it a little more oomph and show those candles who’s boss.","Plot twist: the candles are winning. 🕯️ Shake out those fingers, take a deep breath, and show them what a birthday star can do.","The cake is starting to enjoy the drama. 🎂🔥 One more go, faster this time, like you’re tapping out a love song.","Okay, even the candles are impressed by your commitment. 😌 A little faster, a little braver, and they’re all yours."];
   function startBlow(){
     state="blow";act.hidden=true;
     setUI("Now blow them out!","Tap the button fast. The bar drops when you stop, and the candles must go out before time runs out, or the cake goes up in flames.");
@@ -337,15 +390,15 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
       {duration:1100+Math.random()*700,easing:"cubic-bezier(.1,.7,.3,1)",fill:"forwards"}).onfinish=function(){el.remove();};
   }
   function explode(){
-    state="boom";blowEl.hidden=true;stopMusic();boomSound();noteEl.textContent=MSGS[Math.min(blowFails,1)];blowFails++;
-    setUI("Boom! Too slow","The cake went up in flames. Back to the beginning…");
+    state="boom";blowEl.hidden=true;stopMusic();boomSound();
+    setUI("Boom! Too slow","The cake went up in flames.");
     cake.classList.remove("blowing");cake.classList.add("boom");glow.style.opacity=.5;
     if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)){
       var r=cake.getBoundingClientRect(),k;
       flash.animate([{opacity:0},{opacity:.85},{opacity:0}],{duration:900,easing:"ease-out"});
       for(k=0;k<34;k++)spark(r.left+r.width/2,r.top+r.height*.55,k%6===0);
     }
-    setTimeout(function(){fails=0;setIdle();},3200);
+    setTimeout(function(){$("xtext").textContent=MSGS[Math.min(blowFails,MSGS.length-1)];blowFails++;$("fail").hidden=false;},1700);
   }
   function blowAll(){
     state="busy";act.hidden=true;blowEl.hidden=true;cake.classList.remove("blowing");
@@ -353,17 +406,61 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     setTimeout(function(){c1.classList.remove("on");},600);
     setTimeout(finish,1200);
   }
-  function finish(){
+  function finish(){noteEl.hidden=true;noteEl.textContent="";
     state="done";glow.style.opacity=0;
     var n=name();
     setUI("Happy 20th Birthday"+(n?", "+n:""),"Your wish is on its way. Here are a few of mine for you.");
     i=0;card.hidden=false;showWish();confetti();
   }
+  var stormT=0,rainMade=false;
+  function showSecret(){
+    var L=SECRET.replace(/[^\p{L}]/gu,"").length,n=Math.round(((round-1)*GOAL+got)/(2*GOAL)*L),k=0,out="";
+    SECRET.split("").forEach(function(c){if(/\p{L}/u.test(c)){out+=k<n?c:"•";k++;}else{out+=c;}});
+    secretEl.textContent=out;
+  }
+  function startStorm(){
+    var k,d;
+    if(!rainMade){
+      rainMade=true;
+      for(k=0;k<46;k++){d=document.createElement("i");d.className="rd";d.style.left=(Math.random()*100)+"%";d.style.animationDuration=(.6+Math.random()*.6)+"s";d.style.animationDelay="-"+(Math.random()*1.2)+"s";rainEl.appendChild(d);}
+    }
+    document.body.classList.add("storm");
+    clearTimeout(stormT);stormT=setTimeout(strike,3500+Math.random()*3000);
+  }
+  function stopStorm(){document.body.classList.remove("storm");clearTimeout(stormT);}
+  function strike(){
+    if(state!=="playing"||round!==2){stopStorm();return;}
+    if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches))
+      bolt.animate([{opacity:0},{opacity:.7},{opacity:.05},{opacity:.5},{opacity:0}],{duration:450});
+    setTimeout(thunder,300+Math.random()*500);
+    stormT=setTimeout(strike,5000+Math.random()*6000);
+  }
+  function thunder(){
+    if(!actx)return;
+    try{
+      var len=Math.floor(actx.sampleRate*1.6),buf=actx.createBuffer(1,len,actx.sampleRate),d=buf.getChannelData(0),k;
+      for(k=0;k<len;k++)d[k]=(Math.random()*2-1)*Math.pow(1-k/len,2);
+      var s=actx.createBufferSource(),f=actx.createBiquadFilter(),g=actx.createGain();
+      s.buffer=buf;f.type="lowpass";f.frequency.value=220;g.gain.value=.7;
+      s.connect(f);f.connect(g);g.connect(master);s.start();
+    }catch(e){}
+  }
+  function eatCake(){
+    state="eaten";card.hidden=true;
+    setUI("Nom nom nom 😋","");
+    cake.classList.add("eat");
+    setTimeout(function(){
+      cake.hidden=true;cake.classList.remove("eat");
+      $("ftext").textContent=FINAL;$("final").hidden=false;confetti();
+    },1800);
+  }
   function showWish(){
-    wish.textContent=wishes[i];
-    count.textContent="Wish "+(i+1)+" of "+wishes.length;
-    next.textContent=(i===wishes.length-1)?"Play again":"Next wish";
+    wish.textContent=i<wishes.length?wishes[i]:REQUEST;
+    count.textContent=i<wishes.length?"Wish "+(i+1)+" of "+wishes.length:"A humble request";
+    next.textContent=i===wishes.length?"Eat cake 🍰":(i===wishes.length-1?"A humble request":"Next wish");
     wish.classList.remove("swap");void wish.offsetWidth;wish.classList.add("swap");
+    var req=i===wishes.length;ig.hidden=!req;igmsg.hidden=true;next.classList.toggle("alt",req);
+    if(req)ig.href="https://ig.me/m/"+encodeURIComponent(IG_USER);
   }
 
   act.addEventListener("click",function(){
@@ -377,13 +474,25 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   blowbtn.addEventListener("keydown",function(e){if((e.key===" "||e.key==="Enter")&&!e.repeat)blowTap(e);});
   blowbtn.addEventListener("contextmenu",function(e){e.preventDefault();});
   
+  ig.addEventListener("click",function(){
+    try{navigator.clipboard.writeText(IG_TEXT);}catch(e){}
+    igmsg.textContent="Paste this in the chat: “"+IG_TEXT+"”";igmsg.hidden=false;
+  });
+  $("xretry").addEventListener("click",function(){
+    $("fail").hidden=true;cake.classList.remove("blowing","boom");win(true);
+  });
+  $("fclose").addEventListener("click",function(){
+    var n=name();
+    $("final").hidden=true;state="done";
+    setUI("Happy 20th Birthday"+(n?", "+n:""),"Thank you for playing. ❤️");
+  });
   next.addEventListener("click",function(){
-    if(i>=wishes.length-1){fails=0;setIdle();return;}
+    if(i>=wishes.length){eatCake();return;}
     i++;showWish();
   });
   function pt(e){
     if(state!=="playing")return;
-    bx=Math.max(24,Math.min(W-24,e.clientX-arena.getBoundingClientRect().left));moveBasket();
+    bx=Math.max(24,Math.min(W-24,e.clientX-arena.getBoundingClientRect().left));moveBasket();hintEl.hidden=true;
   }
   arena.addEventListener("pointermove",pt);
   arena.addEventListener("pointerdown",pt);
