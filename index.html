@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>A birthday wish for you</title>
+<title>A birthday wish for you, Malmi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@400;500&display=swap">
 <style>
 :root{--bg1:#fff3f4;--bg2:#f6d3df;--ink:#4a1730;--muted:#8a5a6e;--card:rgba(255,251,248,.88);--accent:#b3224f;--accent-ink:#fff;--gold:#c59a3e;--line:rgba(197,154,62,.5);--rose:#e86f8e;--tier1:#f19db3;--tier2:#fbd3dc;--frost:#fffaf6;--plate:#ecc9d6;--flame:#ffa81f;--flame-in:#fff3b0;--petal:#f2a1b6;
@@ -38,16 +38,17 @@ h1{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-style:i
 .it{position:absolute;left:0;top:0;font-size:1.9rem;line-height:1;pointer-events:none;will-change:transform}
 #basket{position:absolute;left:0;bottom:6px;font-size:2.6rem;line-height:1;pointer-events:none}
 .row{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:1.25rem}
-button.pill,a.pill{font:inherit;font-weight:500;letter-spacing:.02em;background:var(--accent);color:var(--accent-ink);border:1px solid var(--gold);border-radius:999px;padding:.75rem 2rem;cursor:pointer;box-shadow:0 4px 18px rgba(179,34,79,.25)}
+button.pill,a.pill{font:inherit;font-weight:500;letter-spacing:.02em;background:var(--accent);color:var(--accent-ink);border:1px solid var(--gold);border-radius:999px;padding:.75rem 1.8rem;cursor:pointer;box-shadow:0 4px 18px rgba(179,34,79,.25);transition:transform .1s, opacity .2s}
+button.pill:active{transform:scale(.97)}
 button.link{font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:.4rem}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:1.5rem;padding:1.4rem 1.5rem 1.25rem;margin-top:1.5rem;width:100%;box-shadow:0 10px 36px rgba(120,30,70,.14)}
 .orn{width:22px;height:20px;margin:0 auto .6rem;display:block}
-#wish{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.45;margin:0 0 1rem;min-height:12em;display:flex;align-items:center;justify-content:center}
+#wish{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.48;margin:0 0 1rem;min-height:11em;display:flex;align-items:center;justify-content:center}
 #wish.swap{animation:swap .5s ease-out}
 @keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .count{font-size:.85rem;color:var(--muted);margin:0 0 .9rem}
-.note{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.35;background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:1rem 1.25rem;margin:1.1rem 0 0;max-width:24rem}
+.note{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.38;background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:1rem 1.25rem;margin:1.1rem 0 0;max-width:24rem}
 #blow{width:100%;margin-top:1.1rem}
 #blowbtn{font:inherit;font-weight:500;font-size:1.15rem;width:7.5rem;height:7.5rem;border-radius:50%;background:var(--accent);color:var(--accent-ink);border:2px solid var(--gold);box-shadow:0 8px 26px rgba(179,34,79,.3);cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .06s}
 #blowbtn:active{transform:scale(.92)}
@@ -59,26 +60,24 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .pop.up{color:var(--accent)}
 .pop.dn{color:#2f7fd1}
 .pa{position:absolute;font-size:.95rem;line-height:1;pointer-events:none;z-index:2}
-#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;background:rgba(18,8,40,.28);opacity:0;transition:opacity 1.2s}
+#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;background:rgba(18,8,40,.28);opacity:0;transition:opacity 1.5s}
 body.storm #rain{opacity:1}
 .rd{position:absolute;top:-30px;width:1.5px;height:22px;background:linear-gradient(transparent,rgba(170,195,255,.6));animation:rainfall linear infinite}
 @keyframes rainfall{to{transform:translateY(115vh)}}
 #bolt{position:fixed;inset:0;pointer-events:none;z-index:3;background:#eef2ff;opacity:0}
-.secret{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.25rem;letter-spacing:.08em;line-height:1.3;color:var(--accent);margin:0 0 .6rem;min-height:2.6em}
+.secret{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.25rem;letter-spacing:.06em;line-height:1.35;color:var(--accent);margin:0 0 .6rem;min-height:2.8em}
 #hint{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);width:80%;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:1.4rem;line-height:1.3;color:var(--muted);pointer-events:none;animation:hintp 1.6s ease-in-out infinite alternate}
 @keyframes hintp{to{opacity:.4}}
-a.pill{display:inline-block;text-decoration:none}
-a.pill:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 button.pill.alt{background:transparent;color:var(--ink);box-shadow:none}
-.btns{display:flex;flex-direction:column;align-items:center;gap:.6rem}
-.igmsg{font-size:.9rem;color:var(--muted);margin:.9rem 0 0;user-select:text}
+.btns{display:flex;flex-direction:column;align-items:center;gap:.65rem;width:100%}
+.btns button.pill{width:100%;max-width:21rem}
 #cake.eat{transform-origin:50% 70%;animation:eat 1.7s ease-in forwards}
 @keyframes eat{0%{transform:scale(1)}18%{transform:scale(1.25) translateY(-6px)}30%{transform:scale(1.1)}48%{transform:scale(1.6) translateY(-4px)}60%{transform:scale(1.4)}100%{transform:scale(3.4) translateY(30px);opacity:0}}
 .modal{position:fixed;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(40,10,30,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.mbox{background:var(--bg1);border:1px solid var(--line);border-radius:1.5rem;padding:1.75rem 1.5rem 1.5rem;max-width:22rem;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:mpop .5s cubic-bezier(.2,1.2,.3,1)}
+.mbox{background:var(--bg1);border:1px solid var(--line);border-radius:1.5rem;padding:1.75rem 1.5rem 1.5rem;max-width:24rem;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:mpop .5s cubic-bezier(.2,1.2,.3,1);max-height:88vh;overflow-y:auto}
 @keyframes mpop{from{opacity:0;transform:scale(.85) translateY(12px)}to{opacity:1;transform:none}}
 .mbox h2{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:2rem;line-height:1.1;margin:0 0 .6rem}
-.mbox p{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.4rem;line-height:1.4;margin:0 0 1.25rem}
+.mbox p{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.32rem;line-height:1.45;margin:0 0 1.25rem}
 #basket.bounce{animation:bounce .28s}
 #basket.hurt{animation:hurt .4s}
 @keyframes bounce{50%{scale:1.3}}
@@ -136,7 +135,6 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
 
   <div class="row">
     <button class="pill" id="act"></button>
-    
   </div>
 
   <div id="blow" hidden>
@@ -149,10 +147,13 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
     <p id="wish" aria-live="polite"></p>
     <p class="count" id="count"></p>
-    <div class="btns"><a class="pill" id="ig" href="#" target="_blank" rel="noopener" hidden>Reply on Instagram 💌</a><button class="pill" id="next">Next wish</button></div>
-    <p class="igmsg" id="igmsg" hidden></p>
+    <div class="btns">
+      <button class="pill" id="next">Next wish</button>
+      <button class="pill alt" id="altbtn" hidden>I'm sorry, just eat cake — it's better if we don't talk again</button>
+    </div>
   </section>
 </main>
+
 <div id="fail" class="modal" role="dialog" aria-modal="true" aria-labelledby="xtitle" hidden>
   <div class="mbox">
     <h2 id="xtitle">Boom! 🔥</h2>
@@ -160,6 +161,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     <button class="pill" id="xretry">Try again</button>
   </div>
 </div>
+
 <div id="final" class="modal" role="dialog" aria-modal="true" aria-labelledby="ftitle" hidden>
   <div class="mbox">
     <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
@@ -171,356 +173,654 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
 
 <script>
 (function(){
+  /* Optional Webhook URL (e.g., Formspree, Google Apps Script, or Discord/Telegram webhook) to record Malmi's button choice */
   var WEBHOOK_URL = "https://formspree.io/f/xyewjlwk";
-  var GOAL=10,SKIP_AFTER=2;
-  var IG_USER="your_instagram_username",IG_TEXT="Yes, I accept your humble request 💌";
-  var SECRET="It started so quietly. We both began working at the same office, two strangers in a busy open-plan room, each lost in our own routine, neither of us paying the other any attention.";
-  var REQUEST="Mal, will you let me walk beside you into this next chapter, as more than just a friend? If your heart says yes, please react with a white heart 🤍",FINAL="Thank you for sharing this journey with me, Mal. Happy 20th birthday!";
-  var wishes=[
-    "Then one day I heard your voice for the first time, and somehow that single moment made my entire day. After that, your eyes were never just eyes, and your smile was never just a smile. They became the best part of every day I spent there.",
-    "For a while I only watched from far away, too nervous to make a move. My feelings grew a little stronger every day, and every day I found a new reason not to say hello.",
-    "Eventually I gathered every bit of courage I had and sent you a message. Those first conversations were full of nerves on my side. I was only trying to build a small bridge to you, while you were busy with your office days and your life at the hostel.",
-    "Then my time at the office was coming to an end, because I was getting ready for a big new chapter: a BSc in Artificial Intelligence at the University of Moratuwa. I was afraid of losing you completely, so I told you honestly how much I care. You felt unsure and asked for some time, and ever since, I have been waiting and thinking of you.",
-    "Now I am a university undergraduate in Gampaha District, but the not knowing has felt heavy on my heart. I have learned that living on hope that might be false is harder than hearing the truth. Whatever your answer is, yes or no, I would be grateful for a clear one, so I can find peace. If we can talk, please react to my message with a white heart 🤍"
-  ];
-  /* Your earlier six-page story is integrated into the secret reveal & wishes above */
-  var savedStory=[
-    "It started so quietly. We both began working at the same office, two strangers in a busy open-plan room, each lost in our own routine, neither of us paying the other any attention.",
-    "Then one day I heard your voice for the first time, and somehow that single moment made my entire day. After that, your eyes were never just eyes, and your smile was never just a smile. They became the best part of every day I spent there.",
-    "For a while I only watched from far away, too nervous to make a move. My feelings grew a little stronger every day, and every day I found a new reason not to say hello.",
-    "Eventually I gathered every bit of courage I had and sent you a message. Those first conversations were full of nerves on my side. I was only trying to build a small bridge to you, while you were busy with your office days and your life at the hostel.",
-    "Then my time at the office was coming to an end, because I was getting ready for a big new chapter: a BSc in Artificial Intelligence at the University of Moratuwa. I was afraid of losing you completely, so I told you honestly how much I care. You felt unsure and asked for some time, and ever since, I have been waiting and thinking of you.",
-    "Now I am a university undergraduate in Gampaha District, but the not knowing has felt heavy on my heart. I have learned that living on hope that might be false is harder than hearing the truth. Whatever your answer is, yes or no, I would be grateful for a clear one, so I can find peace. If we can talk, please react to my message with a white heart 🤍"
-  ];
-  var $=function(id){return document.getElementById(id);};
-  var cake=$("cake"),game=$("game"),arena=$("arena"),basket=$("basket"),rndEl=$("rnd"),gotEl=$("got"),livesEl=$("lives"),bar=$("bar"),
-      title=$("title"),sub=$("sub"),act=$("act"),card=$("card"),wish=$("wish"),count=$("count"),next=$("next"),glow=$("glow"),mute=$("mute");
-  var c0=$("c0"),c1=$("c1");
-  var state="idle",fails=0,i=0,round=1,got=0,lives=3,rsl=3,items=[],W=0,H=0,bx=0,raf=0,last=0,spawnT=0,bp=0,bTimer=0,bEnd=0,bLast=0;
-  var ig=$("ig"),igmsg=$("igmsg"),hintEl=$("hint"),rainEl=$("rain"),bolt=$("bolt"),secretEl=$("secret"),hinted=false;
-  var blowEl=$("blow"),bbar=$("bbar"),bt=$("bt"),blowbtn=$("blowbtn"),flash=$("flash");
 
-  /* petals */
-  var pw=$("petals"),q,s;
-  for(q=0;q<11;q++){
-    s=document.createElement("span");s.className="p";s.style.left=(Math.random()*100)+"%";
-    s.style.width=(7+Math.random()*6)+"px";s.style.height=(10+Math.random()*7)+"px";
-    s.style.animationDuration=(15+Math.random()*12)+"s";s.style.animationDelay="-"+(Math.random()*20)+"s";
+  var GOAL = 20;
+  var SECRET = "Ton sourire est magnifique — just one glimpse of it makes my whole world brighter.";
+
+  var wishes = [
+    "Malmi, from the very first moment I heard your voice and saw your smile, everything around me changed. I almost got lost in your eyes — they hold a warmth that words can never capture. May you keep blooming and growing more and more radiant with every passing year.",
+    "What amazes me most is the beauty of your heart and soul. Your Methodist faith isn't just spoken — you truly walk with Jesus in how gracefully you accept every fate and face every challenge without ever blaming anyone. May God's grace always hold you close and guide every step you take.",
+    "As you step into this new chapter of your life, I wish you endless success in your higher education and every dream you carry in your heart. Someone as genuine, resilient, and kind as you deserves every blessing and triumph this world has to offer."
+  ];
+
+  var REQUEST = "As I have told you before, Malmi, I truly wanted to walk everywhere beside you for a thousand lifetimes. Waiting in silence hurts far more than you could ever imagine. Can we please talk about us now? Whatever your answer may be, even the hardest truth is gentler than living on false hope.";
+
+  var FINAL_TALK = "Thank you for giving us a moment to talk, Malmi. No matter where our conversation leads, I am endlessly grateful that you exist, and I wish you the happiest, brightest 20th birthday filled with love, faith, and every dream come true. 🤍";
+
+  var FINAL_GOODBYE = "Even though saying goodbye hurts deeper than words can hold, I respect your heart and your peace above all else. Thank you for being the brightest memory of my days, Malmi. May Jesus always watch over you, may your studies and future shine with every success, and may your life be endlessly happy. Happy 20th birthday, always. 🤍";
+
+  var $ = function(id){ return document.getElementById(id); };
+  var cake = $("cake"), game = $("game"), arena = $("arena"), basket = $("basket"),
+      rndEl = $("rnd"), gotEl = $("got"), livesEl = $("lives"), bar = $("bar"),
+      title = $("title"), sub = $("sub"), act = $("act"), card = $("card"),
+      wish = $("wish"), count = $("count"), next = $("next"), altbtn = $("altbtn"),
+      glow = $("glow"), mute = $("mute");
+  var c0 = $("c0"), c1 = $("c1");
+  var state = "idle", i = 0, got = 0, lives = 3, items = [], W = 0, H = 0, bx = 0,
+      raf = 0, last = 0, spawnT = 0, bp = 0, bTimer = 0, bEnd = 0, bLast = 0;
+  var hintEl = $("hint"), rainEl = $("rain"), bolt = $("bolt"), secretEl = $("secret"),
+      hinted = false, stormActive = false, userChoice = "talk";
+  var blowEl = $("blow"), bbar = $("bbar"), bt = $("bt"), blowbtn = $("blowbtn"), flash = $("flash");
+
+  /* Floating petals */
+  var pw = $("petals"), q, s;
+  for(q = 0; q < 11; q++){
+    s = document.createElement("span");
+    s.className = "p";
+    s.style.left = (Math.random() * 100) + "%";
+    s.style.width = (7 + Math.random() * 6) + "px";
+    s.style.height = (10 + Math.random() * 7) + "px";
+    s.style.animationDuration = (15 + Math.random() * 12) + "s";
+    s.style.animationDelay = "-" + (Math.random() * 20) + "s";
     pw.appendChild(s);
   }
 
-  /* music: happy birthday melody, synthesized */
-  var actx=null,master=null,muted=false,bus=null,musicOn=false,loopT=0;
-  var tune=[[392,.75],[392,.25],[440,1],[392,1],[523.25,1],[493.88,2],[392,.75],[392,.25],[440,1],[392,1],[587.33,1],[523.25,2],
-            [392,.75],[392,.25],[783.99,1],[659.25,1],[523.25,1],[493.88,1],[440,2],[698.46,.75],[698.46,.25],[659.25,1],[523.25,1],[587.33,1],[523.25,2]];
+  /* Synthesized Happy Birthday melody & SFX */
+  var actx = null, master = null, muted = false, bus = null, musicOn = false, loopT = 0;
+  var tune = [
+    [392,.75],[392,.25],[440,1],[392,1],[523.25,1],[493.88,2],
+    [392,.75],[392,.25],[440,1],[392,1],[587.33,1],[523.25,2],
+    [392,.75],[392,.25],[783.99,1],[659.25,1],[523.25,1],[493.88,1],[440,2],
+    [698.46,.75],[698.46,.25],[659.25,1],[523.25,1],[587.33,1],[523.25,2]
+  ];
   function initAudio(){
     try{
       if(!actx){
-        var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
-        actx=new AC();master=actx.createGain();master.gain.value=muted?0:.22;master.connect(actx.destination);
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if(!AC) return;
+        actx = new AC();
+        master = actx.createGain();
+        master.gain.value = muted ? 0 : .22;
+        master.connect(actx.destination);
       }
-      if(actx.state==="suspended")actx.resume();
+      if(actx.state === "suspended") actx.resume();
     }catch(e){}
   }
   function playTune(t0){
-    if(!actx||!musicOn)return;
+    if(!actx || !musicOn) return;
     try{
-      var t=t0,beat=.5,nxt=t0+25*beat+1.2;loopT=setTimeout(function(){playTune(nxt);},Math.max(0,(nxt-actx.currentTime-1)*1000));
+      var t = t0, beat = .5, nxt = t0 + 25 * beat + 1.2;
+      loopT = setTimeout(function(){ playTune(nxt); }, Math.max(0, (nxt - actx.currentTime - 1) * 1000));
       tune.forEach(function(n){
-        var d=n[1]*beat;
+        var d = n[1] * beat;
         [["triangle",1,1],["sine",2,.25]].forEach(function(v){
-          var o=actx.createOscillator(),g=actx.createGain(),end=t+d*1.3+.2;
-          o.type=v[0];o.frequency.value=n[0]*v[1];
-          g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v[2],t+.02);g.gain.exponentialRampToValueAtTime(.001,end);
-          o.connect(g);g.connect(bus);o.start(t);o.stop(end+.05);
+          var o = actx.createOscillator(), g = actx.createGain(), end = t + d * 1.3 + .2;
+          o.type = v[0];
+          o.frequency.value = n[0] * v[1];
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(v[2], t + .02);
+          g.gain.exponentialRampToValueAtTime(.001, end);
+          o.connect(g);
+          g.connect(bus);
+          o.start(t);
+          o.stop(end + .05);
         });
-        t+=d;
+        t += d;
       });
     }catch(e){}
   }
-  function tone(f,t0,dur,type,vol,f2){
-    if(!actx)return;
+  function tone(f, t0, dur, type, vol, f2){
+    if(!actx) return;
     try{
-      var o=actx.createOscillator(),g=actx.createGain(),t=actx.currentTime+t0;
-      o.type=type;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+dur);
-      g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);
-      o.connect(g);g.connect(master);o.start(t);o.stop(t+dur+.02);
+      var o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime + t0;
+      o.type = type;
+      o.frequency.setValueAtTime(f, t);
+      if(f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+      g.gain.setValueAtTime(vol, t);
+      g.gain.exponentialRampToValueAtTime(.001, t + dur);
+      o.connect(g);
+      g.connect(master);
+      o.start(t);
+      o.stop(t + dur + .02);
     }catch(e){}
   }
-  function sfxHeart(n){var f=660+n*45;tone(f,0,.16,"sine",.8);tone(f*1.5,.07,.24,"sine",.6);}
-  function sfxRain(){tone(340,0,.3,"triangle",.9,100);tone(90,0,.22,"sine",.9);}
-  function rm(e){return function(){e.remove();};}
-  function mk(cls,txt,x,y){var e=document.createElement("span");e.className=cls;e.textContent=txt;e.style.left=x+"px";e.style.top=y+"px";arena.appendChild(e);return e;}
-  function catchFx(x,y,heart){
-    if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
-    basket.classList.remove("bounce","hurt");void basket.offsetWidth;basket.classList.add(heart?"bounce":"hurt");
-    var e=mk(heart?"pop up":"pop dn",heart?"+1":"\u22121",x,y-8),k,p,a,dx,dy;
-    e.animate([{transform:"translate(-50%,0)",opacity:1},{transform:"translate(-50%,-54px)",opacity:0}],{duration:850,easing:"ease-out"}).onfinish=rm(e);
-    for(k=0;k<(heart?7:10);k++){
-      p=mk("pa",heart?(k%3?"\ud83d\udc96":"\u2728"):"\ud83d\udca7",x,y);
-      a=-Math.PI*(.08+.84*Math.random());dx=Math.cos(a)*(26+Math.random()*40);dy=Math.sin(a)*(26+Math.random()*40);
-      p.animate([{transform:"translate(-50%,-50%)",opacity:1},{transform:"translate(-50%,-50%) translate("+dx*.7+"px,"+dy+"px)",opacity:1,offset:.5},{transform:"translate(-50%,-50%) translate("+dx+"px,"+(heart?dy-10:dy+34)+"px) scale(.5)",opacity:0}],{duration:650,easing:"ease-out"}).onfinish=rm(p);
+  function sfxHeart(n){ var f = 660 + n * 28; tone(f, 0, .16, "sine", .8); tone(f * 1.5, .07, .24, "sine", .6); }
+  function sfxRain(){ tone(340, 0, .3, "triangle", .9, 100); tone(90, 0, .22, "sine", .9); }
+  function rm(e){ return function(){ e.remove(); }; }
+  function mk(cls, txt, x, y){
+    var e = document.createElement("span");
+    e.className = cls;
+    e.textContent = txt;
+    e.style.left = x + "px";
+    e.style.top = y + "px";
+    arena.appendChild(e);
+    return e;
+  }
+  function catchFx(x, y, heart){
+    if(window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    basket.classList.remove("bounce", "hurt");
+    void basket.offsetWidth;
+    basket.classList.add(heart ? "bounce" : "hurt");
+    var e = mk(heart ? "pop up" : "pop dn", heart ? "+1" : "\u22121", x, y - 8), k, p, a, dx, dy;
+    e.animate([{transform:"translate(-50%,0)",opacity:1},{transform:"translate(-50%,-54px)",opacity:0}],{duration:850,easing:"ease-out"}).onfinish = rm(e);
+    for(k = 0; k < (heart ? 7 : 10); k++){
+      p = mk("pa", heart ? (k % 3 ? "\ud83d\udc96" : "\u2728") : "\ud83d\udca7", x, y);
+      a = -Math.PI * (.08 + .84 * Math.random());
+      dx = Math.cos(a) * (26 + Math.random() * 40);
+      dy = Math.sin(a) * (26 + Math.random() * 40);
+      p.animate([
+        {transform:"translate(-50%,-50%)",opacity:1},
+        {transform:"translate(-50%,-50%) translate(" + dx * .7 + "px," + dy + "px)",opacity:1,offset:.5},
+        {transform:"translate(-50%,-50%) translate(" + dx + "px," + (heart ? dy - 10 : dy + 34) + "px) scale(.5)",opacity:0}
+      ], {duration:650,easing:"ease-out"}).onfinish = rm(p);
     }
   }
   function startMusic(){
-    if(!actx)return;stopMusic();
-    bus=actx.createGain();bus.connect(master);musicOn=true;playTune(actx.currentTime+.4);
+    if(!actx) return;
+    stopMusic();
+    bus = actx.createGain();
+    bus.connect(master);
+    musicOn = true;
+    playTune(actx.currentTime + .4);
   }
   function stopMusic(){
-    musicOn=false;clearTimeout(loopT);
-    if(bus){try{bus.gain.setTargetAtTime(0,actx.currentTime,.05);}catch(e){}bus=null;}
+    musicOn = false;
+    clearTimeout(loopT);
+    if(bus){ try{ bus.gain.setTargetAtTime(0, actx.currentTime, .05); }catch(e){} bus = null; }
   }
   function boomSound(){
-    if(!actx)return;
+    if(!actx) return;
     try{
-      var o=actx.createOscillator(),g=actx.createGain(),t=actx.currentTime;
-      o.type="sawtooth";o.frequency.setValueAtTime(160,t);o.frequency.exponentialRampToValueAtTime(30,t+.8);
-      g.gain.setValueAtTime(.9,t);g.gain.exponentialRampToValueAtTime(.001,t+.9);
-      o.connect(g);g.connect(master);o.start(t);o.stop(t+1);
+      var o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime;
+      o.type = "sawtooth";
+      o.frequency.setValueAtTime(160, t);
+      o.frequency.exponentialRampToValueAtTime(30, t + .8);
+      g.gain.setValueAtTime(.9, t);
+      g.gain.exponentialRampToValueAtTime(.001, t + .9);
+      o.connect(g);
+      g.connect(master);
+      o.start(t);
+      o.stop(t + 1);
     }catch(e){}
   }
-  mute.addEventListener("click",function(){
-    muted=!muted;mute.textContent=muted?"🔇":"🔊";
-    mute.setAttribute("aria-label",muted?"Unmute music":"Mute music");mute.setAttribute("aria-pressed",String(muted));
-    if(master)master.gain.value=muted?0:.22;
+  mute.addEventListener("click", function(){
+    muted = !muted;
+    mute.textContent = muted ? "🔇" : "🔊";
+    mute.setAttribute("aria-label", muted ? "Unmute music" : "Mute music");
+    mute.setAttribute("aria-pressed", String(muted));
+    if(master) master.gain.value = muted ? 0 : .22;
   });
 
-  function name(){try{return decodeURIComponent(location.hash.slice(1)).replace(/-/g," ").trim();}catch(e){return "Mal";}}
-  function setUI(t,s,b){
-    title.textContent=t;sub.textContent=s;sub.hidden=!s;
-    if(b){act.textContent=b;act.hidden=false;}else{act.hidden=true;}
+  function name(){
+    try{
+      var h = decodeURIComponent(location.hash.slice(1)).replace(/-/g, " ").trim();
+      return h || "Malmi";
+    }catch(e){ return "Malmi"; }
   }
-  function clearItems(){items.forEach(function(it){it.el.remove();});items=[];}
-  function moveBasket(){basket.style.transform="translateX("+(bx-21)+"px)";}
-  function hud(){
-    rndEl.textContent="Round "+round+" of 2";
-    gotEl.textContent="Hearts "+got+" of "+GOAL;
-    livesEl.textContent="🕯️".repeat(lives);
-    bar.style.width=(got/GOAL*100)+"%";showSecret();
-    glow.style.opacity=.06+.2*((round-1)*GOAL+got)/(2*GOAL);
+  function setUI(t, s, b){
+    title.textContent = t;
+    sub.textContent = s;
+    sub.hidden = !s;
+    if(b){ act.textContent = b; act.hidden = false; }
+    else{ act.hidden = true; }
+  }
+  function clearItems(){ items.forEach(function(it){ it.el.remove(); }); items = []; }
+  function moveBasket(){ basket.style.transform = "translateX(" + (bx - 21) + "px)"; }
+
+  function updateWeather(progress){
+    /* Seamlessly shift from clear sky -> light breeze -> storm as hearts approach 20 */
+    if(progress < 0.4){
+      rndEl.textContent = "Clear Skies ☀️";
+      if(stormActive) stopStorm();
+    } else if(progress < 0.7){
+      rndEl.textContent = "Wind Picking Up 🍃";
+      if(stormActive) stopStorm();
+    } else {
+      rndEl.textContent = "Storm Rolling In ⛈️";
+      if(!stormActive) startStorm();
+    }
   }
 
-  function setIdle(){stopStorm();
-    cancelAnimationFrame(raf);clearInterval(bTimer);stopMusic();state="idle";clearItems();lives=3;blowEl.hidden=true;cake.classList.remove("blowing","boom");noteEl.hidden=!noteEl.textContent;
-    game.hidden=true;cake.hidden=false;card.hidden=true;
-    c0.classList.remove("on");c1.classList.remove("on");glow.style.opacity=.06;
-    setUI("Catch 20 hearts to light your candles","Slide your cake to catch falling hearts 💖 and dodge the rain 💧. Every raindrop steals a heart and puts out a candle. Two rounds, ten hearts each.","Start");
+  function hud(){
+    var progress = got / GOAL;
+    updateWeather(progress);
+    gotEl.textContent = "Hearts " + got + " of " + GOAL;
+    livesEl.textContent = "🕯️".repeat(lives);
+    bar.style.width = (progress * 100) + "%";
+    showSecret();
+    glow.style.opacity = .06 + .24 * progress;
   }
-  function startRound(r,retry){if(r===2)startStorm();else stopStorm();hintEl.hidden=!(r===1&&!hinted);if(!hintEl.hidden){hinted=true;setTimeout(function(){hintEl.hidden=true;},6000);}
-    round=r;got=0;if(retry)lives=Math.max(rsl,2);else if(r===1)lives=3;rsl=lives;clearItems();noteEl.hidden=true;noteEl.textContent="";
-    cake.hidden=true;game.hidden=false;
-    W=arena.clientWidth;H=arena.clientHeight;bx=W/2;moveBasket();
-    state="playing";setUI("Catch the hearts!","");hud();
-    spawnT=.6;last=performance.now();raf=requestAnimationFrame(loop);
+
+  function setIdle(){
+    stopStorm();
+    cancelAnimationFrame(raf);
+    clearInterval(bTimer);
+    stopMusic();
+    state = "idle";
+    clearItems();
+    lives = 3;
+    blowEl.hidden = true;
+    cake.classList.remove("blowing", "boom");
+    noteEl.hidden = !noteEl.textContent;
+    game.hidden = true;
+    cake.hidden = false;
+    card.hidden = true;
+    c0.classList.remove("on");
+    c1.classList.remove("on");
+    glow.style.opacity = .06;
+    setUI(
+      "Catch 20 hearts to light your candles, Malmi",
+      "Slide your cake to catch falling hearts 💖 and dodge the rain 💧. As you get closer, the storm rolls in and the wind picks up.",
+      "Start"
+    );
   }
-  function spawn(){
-    var heart=Math.random()<(round===1?.55:.4),el=document.createElement("span");
-    el.className="it";el.textContent=heart?"💖":"💧";arena.appendChild(el);
-    items.push({el:el,heart:heart,x:12+Math.random()*(W-56),y:-36,age:0,ph:Math.random()*6,
-      vy:(round===1?115:165)+got*7+Math.random()*30+(heart||round===1?0:20),sw:round===1?0:70});
-  }
-  function loop(t){
-    if(state!=="playing")return;
-    var dt=Math.min(.05,(t-last)/1000||0),n,it;last=t;
-    spawnT-=dt;
-    if(spawnT<=0){spawn();spawnT=(round===1?1.1:.85)*(1-.25*got/GOAL)+Math.random()*.25;}
-    for(n=items.length-1;n>=0;n--){
-      it=items[n];it.age+=dt;it.y+=it.vy*dt;it.x+=Math.cos(it.age*3+it.ph)*it.sw*dt;
-      it.el.style.transform="translate("+it.x+"px,"+it.y+"px)";
-      if(it.y>H-56&&it.y<H-10&&Math.abs(it.x+15-bx)<34){
-        it.el.remove();items.splice(n,1);
-        if(it.heart){got++;hud();sfxHeart(got);catchFx(it.x+15,H-64,true);if(got>=GOAL){roundDone();return;}}
-        else{
-          got=Math.max(0,got-1);lives--;hud();sfxRain();catchFx(it.x+15,H-64,false);
-          arena.classList.remove("shake");void arena.offsetWidth;arena.classList.add("shake");
-          gotEl.classList.remove("bad");void gotEl.offsetWidth;gotEl.classList.add("bad");
-          if(lives<=0){lose();return;}
-        }
-      }else if(it.y>H){it.el.remove();items.splice(n,1);}
+
+  function startGame(){
+    stopStorm();
+    hintEl.hidden = hinted;
+    if(!hintEl.hidden){
+      hinted = true;
+      setTimeout(function(){ hintEl.hidden = true; }, 6000);
     }
-    raf=requestAnimationFrame(loop);
+    got = 0;
+    lives = 3;
+    clearItems();
+    noteEl.hidden = true;
+    noteEl.textContent = "";
+    cake.hidden = true;
+    game.hidden = false;
+    W = arena.clientWidth;
+    H = arena.clientHeight;
+    bx = W / 2;
+    moveBasket();
+    state = "playing";
+    setUI("Catch the hearts!", "");
+    hud();
+    spawnT = .5;
+    last = performance.now();
+    raf = requestAnimationFrame(loop);
   }
-  function roundDone(){stopStorm();
-    cancelAnimationFrame(raf);clearItems();
-    if(round===1){state="between";setUI("Round 1 done!","The wind is picking up, the rain is getting heavier, and hearts will drift. The candles you have left carry over.","Start round 2");}
-    else win();
+
+  function spawn(){
+    var progress = got / GOAL;
+    /* Seamless difficulty ramp: heart ratio shifts from 60% -> 40%, speed increases smoothly, wind sway rises after 35% */
+    var heartProb = 0.60 - 0.20 * progress;
+    var heart = Math.random() < heartProb;
+    var el = document.createElement("span");
+    el.className = "it";
+    el.textContent = heart ? "💖" : "💧";
+    arena.appendChild(el);
+
+    var baseSpeed = 115 + 75 * progress + Math.random() * 28 + (heart ? 0 : 12 * progress);
+    var windSway = progress > 0.35 ? ((progress - 0.35) / 0.65) * 78 : 0;
+
+    items.push({
+      el: el,
+      heart: heart,
+      x: 12 + Math.random() * (W - 56),
+      y: -36,
+      age: 0,
+      ph: Math.random() * 6,
+      vy: baseSpeed,
+      sw: windSway
+    });
   }
-  function lose(){stopStorm();
-    cancelAnimationFrame(raf);clearItems();state="busy";gameFails++;noteEl.textContent=RMSGS[Math.min(gameFails-1,1)];
-    setUI("The rain won this round","All your candles are out. Back to the beginning…");
-    setTimeout(setIdle,2600);
+
+  function loop(t){
+    if(state !== "playing") return;
+    var dt = Math.min(.05, (t - last) / 1000 || 0), n, it;
+    last = t;
+    var progress = got / GOAL;
+    spawnT -= dt;
+    if(spawnT <= 0){
+      spawn();
+      spawnT = (1.05 - 0.35 * progress) + Math.random() * .22;
+    }
+    for(n = items.length - 1; n >= 0; n--){
+      it = items[n];
+      it.age += dt;
+      it.y += it.vy * dt;
+      it.x += Math.cos(it.age * 3 + it.ph) * it.sw * dt;
+      /* Keep drifting items inside arena bounds */
+      it.x = Math.max(8, Math.min(W - 40, it.x));
+      it.el.style.transform = "translate(" + it.x + "px," + it.y + "px)";
+
+      if(it.y > H - 56 && it.y < H - 10 && Math.abs(it.x + 15 - bx) < 34){
+        it.el.remove();
+        items.splice(n, 1);
+        if(it.heart){
+          got++;
+          hud();
+          sfxHeart(got);
+          catchFx(it.x + 15, H - 64, true);
+          if(got >= GOAL){ win(); return; }
+        } else {
+          got = Math.max(0, got - 1);
+          lives--;
+          hud();
+          sfxRain();
+          catchFx(it.x + 15, H - 64, false);
+          arena.classList.remove("shake");
+          void arena.offsetWidth;
+          arena.classList.add("shake");
+          gotEl.classList.remove("bad");
+          void gotEl.offsetWidth;
+          gotEl.classList.add("bad");
+          if(lives <= 0){ lose(); return; }
+        }
+      } else if(it.y > H){
+        it.el.remove();
+        items.splice(n, 1);
+      }
+    }
+    raf = requestAnimationFrame(loop);
   }
-  function win(again){stopStorm();noteEl.textContent="A secret your hearts uncovered: “"+SECRET+"”";noteEl.hidden=false;
-    cancelAnimationFrame(raf);clearItems();state="won";
-    game.hidden=true;cake.hidden=false;glow.style.opacity=.34;
-    c0.classList.remove("on");c1.classList.remove("on");
-    setUI(again?"Try once more!":"You did it!",again?"Light the 2 and the 0 again, then blow harder this time.":"Light up the 2 and the 0, make a wish, then blow them out.");
-    initAudio();startMusic();
-    setTimeout(function(){c0.classList.add("on");},400);
-    setTimeout(function(){c1.classList.add("on");},1000);
-    setTimeout(function(){if(state==="won"){act.textContent="Blow them out";act.hidden=false;}},1500);
+
+  function lose(){
+    stopStorm();
+    cancelAnimationFrame(raf);
+    clearItems();
+    state = "busy";
+    gameFails++;
+    noteEl.textContent = RMSGS[Math.min(gameFails - 1, 1)];
+    setUI("The rain won this time, Malmi", "All your candles went out. Let's try again…");
+    setTimeout(setIdle, 2600);
   }
-  var BLOW=[{g:6,d:22,cap:62,t:12000},{g:6,d:30,cap:100,t:10000},{g:8,d:18,cap:100,t:14000}],blowFails=0,gameFails=0,bc=BLOW[0],noteEl=$("note");
-  var RMSGS=["Oh no, the rain got all your candles! 😏 Those raindrops are clingy, but you’re quicker than that. Shake it off and show them who’s in charge.","The rain won again, but I’m not giving up on you. 😉 Keep your cake steady, stay on those hearts, and don’t let a few raindrops steal your sparkle."];
-  var MSGS=["Awww, so gentle… the candles didn’t even flinch. 😏 Don’t hold back on your birthday. Push a little harder this time.","Okay, now you’re just teasing me. 😉 Better, but I know you’ve got more power in those fingers. Don’t be so gentle, give it a little more oomph and show those candles who’s boss.","Plot twist: the candles are winning. 🕯️ Shake out those fingers, take a deep breath, and show them what a birthday star can do.","The cake is starting to enjoy the drama. 🎂🔥 One more go, faster this time, like you’re tapping out a love song.","Okay, even the candles are impressed by your commitment. 😌 A little faster, a little braver, and they’re all yours."];
+
+  function win(again){
+    stopStorm();
+    noteEl.textContent = "A secret your hearts uncovered: “" + SECRET + "”";
+    noteEl.hidden = false;
+    cancelAnimationFrame(raf);
+    clearItems();
+    state = "won";
+    game.hidden = true;
+    cake.hidden = false;
+    glow.style.opacity = .34;
+    c0.classList.remove("on");
+    c1.classList.remove("on");
+    setUI(
+      again ? "Try once more, Malmi!" : "You did it, Malmi!",
+      again ? "Light the 2 and the 0 again, then blow harder this time." : "Light up the 2 and the 0, make a wish, then blow them out."
+    );
+    initAudio();
+    startMusic();
+    setTimeout(function(){ c0.classList.add("on"); }, 400);
+    setTimeout(function(){ c1.classList.add("on"); }, 1000);
+    setTimeout(function(){ if(state === "won"){ act.textContent = "Blow them out"; act.hidden = false; } }, 1500);
+  }
+
+  var BLOW = [{g:6,d:22,cap:62,t:12000},{g:6,d:30,cap:100,t:10000},{g:8,d:18,cap:100,t:14000}],
+      blowFails = 0, gameFails = 0, bc = BLOW[0], noteEl = $("note");
+  var RMSGS = [
+    "Oh no, the rain got all your candles! 😏 Those raindrops are clingy, Malmi, but you’re quicker than that. Shake it off and show them who’s in charge.",
+    "The rain won again, but I’m not giving up on you. 😉 Keep your cake steady, stay on those hearts, and don’t let a few raindrops steal your sparkle."
+  ];
+  var MSGS = [
+    "Awww, so gentle… the candles didn’t even flinch. 😏 Don’t hold back on your birthday, Malmi. Push a little harder this time.",
+    "Okay, now you’re just teasing me. 😉 Better, but I know you’ve got more power in those fingers. Give it a little more oomph!",
+    "Plot twist: the candles are winning. 🕯️ Shake out those fingers, take a deep breath, and show them what a birthday star can do.",
+    "The cake is starting to enjoy the drama. 🎂🔥 One more go, faster this time!",
+    "Okay, even the candles are impressed by your commitment. 😌 A little faster, a little braver, and they’re all yours."
+  ];
+
   function startBlow(){
-    state="blow";act.hidden=true;
-    setUI("Now blow them out!","Tap the button fast. The bar drops when you stop, and the candles must go out before time runs out, or the cake goes up in flames.");
-    bc=BLOW[Math.min(blowFails,2)];bp=0;blowShow();bt.textContent=Math.round(bc.t/1000)+"s";cake.classList.add("blowing");blowEl.hidden=false;
-    bLast=Date.now();bEnd=bLast+bc.t;clearInterval(bTimer);bTimer=setInterval(blowTick,50);
+    state = "blow";
+    act.hidden = true;
+    setUI("Now blow them out!", "Tap the button fast. The bar drops when you stop, and the candles must go out before time runs out, or the cake goes up in flames.");
+    bc = BLOW[Math.min(blowFails, 2)];
+    bp = 0;
+    blowShow();
+    bt.textContent = Math.round(bc.t / 1000) + "s";
+    cake.classList.add("blowing");
+    blowEl.hidden = false;
+    bLast = Date.now();
+    bEnd = bLast + bc.t;
+    clearInterval(bTimer);
+    bTimer = setInterval(blowTick, 50);
   }
-  function blowShow(){bbar.style.width=bp+"%";cake.style.setProperty("--b",bp/100);}
+  function blowShow(){ bbar.style.width = bp + "%"; cake.style.setProperty("--b", bp / 100); }
   function blowTap(e){
-    if(state!=="blow")return;
-    if(e)e.preventDefault();
-    bp=Math.min(bc.cap,bp+bc.g);blowShow();
-    try{if(navigator.vibrate)navigator.vibrate(8);}catch(x){}
-    if(bp>=100){clearInterval(bTimer);blowAll();}
+    if(state !== "blow") return;
+    if(e) e.preventDefault();
+    bp = Math.min(bc.cap, bp + bc.g);
+    blowShow();
+    try{ if(navigator.vibrate) navigator.vibrate(8); }catch(x){}
+    if(bp >= 100){ clearInterval(bTimer); blowAll(); }
   }
   function blowTick(){
-    var now=Date.now(),left=bEnd-now;
-    bp=Math.max(0,bp-bc.d*(now-bLast)/1000);bLast=now;blowShow();
-    bt.textContent=Math.max(0,Math.ceil(left/1000))+"s";
-    if(left<=0){clearInterval(bTimer);explode();}
+    var now = Date.now(), left = bEnd - now;
+    bp = Math.max(0, bp - bc.d * (now - bLast) / 1000);
+    bLast = now;
+    blowShow();
+    bt.textContent = Math.max(0, Math.ceil(left / 1000)) + "s";
+    if(left <= 0){ clearInterval(bTimer); explode(); }
   }
-  function spark(cx,cy,big){
-    var el=document.createElement("span"),a=Math.random()*6.283,d=60+Math.random()*Math.min(innerWidth,420)*.6;
-    el.className="fx2";el.textContent=big?"💥":"🔥";document.body.appendChild(el);
-    el.animate([{transform:"translate("+(cx-16)+"px,"+(cy-16)+"px) scale(.4)",opacity:1},
-      {transform:"translate("+(cx-16+Math.cos(a)*d)+"px,"+(cy-16+Math.sin(a)*d-40)+"px) scale("+(1+Math.random()*1.2)+")",opacity:0}],
-      {duration:1100+Math.random()*700,easing:"cubic-bezier(.1,.7,.3,1)",fill:"forwards"}).onfinish=function(){el.remove();};
+  function spark(cx, cy, big){
+    var el = document.createElement("span"), a = Math.random() * 6.283, d = 60 + Math.random() * Math.min(innerWidth, 420) * .6;
+    el.className = "fx2";
+    el.textContent = big ? "💥" : "🔥";
+    document.body.appendChild(el);
+    el.animate([
+      {transform:"translate(" + (cx - 16) + "px," + (cy - 16) + "px) scale(.4)",opacity:1},
+      {transform:"translate(" + (cx - 16 + Math.cos(a) * d) + "px," + (cy - 16 + Math.sin(a) * d - 40) + "px) scale(" + (1 + Math.random() * 1.2) + ")",opacity:0}
+    ], {duration:1100 + Math.random() * 700,easing:"cubic-bezier(.1,.7,.3,1)",fill:"forwards"}).onfinish = function(){ el.remove(); };
   }
   function explode(){
-    state="boom";blowEl.hidden=true;stopMusic();boomSound();
-    setUI("Boom! Too slow","The cake went up in flames.");
-    cake.classList.remove("blowing");cake.classList.add("boom");glow.style.opacity=.5;
-    if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)){
-      var r=cake.getBoundingClientRect(),k;
+    state = "boom";
+    blowEl.hidden = true;
+    stopMusic();
+    boomSound();
+    setUI("Boom! Too slow", "The cake went up in flames.");
+    cake.classList.remove("blowing");
+    cake.classList.add("boom");
+    glow.style.opacity = .5;
+    if(!(window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches)){
+      var r = cake.getBoundingClientRect(), k;
       flash.animate([{opacity:0},{opacity:.85},{opacity:0}],{duration:900,easing:"ease-out"});
-      for(k=0;k<34;k++)spark(r.left+r.width/2,r.top+r.height*.55,k%6===0);
+      for(k = 0; k < 34; k++) spark(r.left + r.width / 2, r.top + r.height * .55, k % 6 === 0);
     }
-    setTimeout(function(){$("xtext").textContent=MSGS[Math.min(blowFails,MSGS.length-1)];blowFails++;$("fail").hidden=false;},1700);
+    setTimeout(function(){ $("xtext").textContent = MSGS[Math.min(blowFails, MSGS.length - 1)]; blowFails++; $("fail").hidden = false; }, 1700);
   }
   function blowAll(){
-    state="busy";act.hidden=true;blowEl.hidden=true;cake.classList.remove("blowing");
-    setTimeout(function(){c0.classList.remove("on");},100);
-    setTimeout(function(){c1.classList.remove("on");},600);
-    setTimeout(finish,1200);
+    state = "busy";
+    act.hidden = true;
+    blowEl.hidden = true;
+    cake.classList.remove("blowing");
+    setTimeout(function(){ c0.classList.remove("on"); }, 100);
+    setTimeout(function(){ c1.classList.remove("on"); }, 600);
+    setTimeout(finish, 1200);
   }
-  function finish(){noteEl.hidden=true;noteEl.textContent="";
-    state="done";glow.style.opacity=0;
-    var n=name();
-    setUI("Happy 20th Birthday"+(n?", "+n:""),"Your wish is on its way. Here are a few of mine for you.");
-    i=0;card.hidden=false;showWish();confetti();
-  }
-  var stormT=0,rainMade=false;
-  function showSecret(){
-    var L=SECRET.replace(/[^\p{L}]/gu,"").length,n=Math.round(((round-1)*GOAL+got)/(2*GOAL)*L),k=0,out="";
-    SECRET.split("").forEach(function(c){if(/\p{L}/u.test(c)){out+=k<n?c:"•";k++;}else{out+=c;}});
-    secretEl.textContent=out;
-  }
-  function startStorm(){
-    var k,d;
-    if(!rainMade){
-      rainMade=true;
-      for(k=0;k<46;k++){d=document.createElement("i");d.className="rd";d.style.left=(Math.random()*100)+"%";d.style.animationDuration=(.6+Math.random()*.6)+"s";d.style.animationDelay="-"+(Math.random()*1.2)+"s";rainEl.appendChild(d);}
-    }
-    document.body.classList.add("storm");
-    clearTimeout(stormT);stormT=setTimeout(strike,3500+Math.random()*3000);
-  }
-  function stopStorm(){document.body.classList.remove("storm");clearTimeout(stormT);}
-  function strike(){
-    if(state!=="playing"||round!==2){stopStorm();return;}
-    if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches))
-      bolt.animate([{opacity:0},{opacity:.7},{opacity:.05},{opacity:.5},{opacity:0}],{duration:450});
-    setTimeout(thunder,300+Math.random()*500);
-    stormT=setTimeout(strike,5000+Math.random()*6000);
-  }
-  function thunder(){
-    if(!actx)return;
-    try{
-      var len=Math.floor(actx.sampleRate*1.6),buf=actx.createBuffer(1,len,actx.sampleRate),d=buf.getChannelData(0),k;
-      for(k=0;k<len;k++)d[k]=(Math.random()*2-1)*Math.pow(1-k/len,2);
-      var s=actx.createBufferSource(),f=actx.createBiquadFilter(),g=actx.createGain();
-      s.buffer=buf;f.type="lowpass";f.frequency.value=220;g.gain.value=.7;
-      s.connect(f);f.connect(g);g.connect(master);s.start();
-    }catch(e){}
-  }
-  function eatCake(){
-    state="eaten";card.hidden=true;
-    setUI("Nom nom nom 😋","");
-    cake.classList.add("eat");
-    setTimeout(function(){
-      cake.hidden=true;cake.classList.remove("eat");
-      $("ftext").textContent=FINAL;$("final").hidden=false;confetti();
-    },1800);
-  }
-  function showWish(){
-    wish.textContent=i<wishes.length?wishes[i]:REQUEST;
-    count.textContent=i<wishes.length?"Wish "+(i+1)+" of "+wishes.length:"A humble request";
-    next.textContent=i===wishes.length?"Eat cake 🍰":(i===wishes.length-1?"A humble request":"Next wish");
-    wish.classList.remove("swap");void wish.offsetWidth;wish.classList.add("swap");
-    var req=i===wishes.length;ig.hidden=!req;igmsg.hidden=true;next.classList.toggle("alt",req);
-    if(req)ig.href="https://ig.me/m/"+encodeURIComponent(IG_USER);
+  function finish(){
+    noteEl.hidden = true;
+    noteEl.textContent = "";
+    state = "done";
+    glow.style.opacity = 0;
+    var n = name();
+    setUI("Happy 20th Birthday, " + n, "Your wish is on its way. Here are three wishes from my heart for you.");
+    i = 0;
+    card.hidden = false;
+    showWish();
+    confetti();
   }
 
-  act.addEventListener("click",function(){
-    initAudio();
-    if(state==="idle")startRound(1,false);
-    else if(state==="between")startRound(2,false);
-    else if(state==="lost")startRound(round,true);
-    else if(state==="won")startBlow();
-  });
-  blowbtn.addEventListener("pointerdown",blowTap);
-  blowbtn.addEventListener("keydown",function(e){if((e.key===" "||e.key==="Enter")&&!e.repeat)blowTap(e);});
-  blowbtn.addEventListener("contextmenu",function(e){e.preventDefault();});
-  
-  ig.addEventListener("click",function(){
-    try{navigator.clipboard.writeText(IG_TEXT);}catch(e){}
-    igmsg.textContent="Paste this in the chat: “"+IG_TEXT+"”";igmsg.hidden=false;
-  });
-  $("xretry").addEventListener("click",function(){
-    $("fail").hidden=true;cake.classList.remove("blowing","boom");win(true);
-  });
-  $("fclose").addEventListener("click",function(){
-    var n=name();
-    $("final").hidden=true;state="done";
-    setUI("Happy 20th Birthday"+(n?", "+n:""),"Thank you for playing. ❤️");
-  });
-  next.addEventListener("click",function(){
-    if(i>=wishes.length){eatCake();return;}
-    i++;showWish();
-  });
-  function pt(e){
-    if(state!=="playing")return;
-    bx=Math.max(24,Math.min(W-24,e.clientX-arena.getBoundingClientRect().left));moveBasket();hintEl.hidden=true;
+  var stormT = 0, rainMade = false;
+  function showSecret(){
+    var L = SECRET.replace(/[^\p{L}]/gu, "").length, n = Math.round((got / GOAL) * L), k = 0, out = "";
+    SECRET.split("").forEach(function(c){
+      if(/\p{L}/u.test(c)){ out += k < n ? c : "•"; k++; }
+      else{ out += c; }
+    });
+    secretEl.textContent = out;
   }
-  arena.addEventListener("pointermove",pt);
-  arena.addEventListener("pointerdown",pt);
-  document.addEventListener("keydown",function(e){
-    if(state!=="playing")return;
-    if(e.key==="ArrowLeft"){bx=Math.max(24,bx-40);moveBasket();e.preventDefault();}
-    if(e.key==="ArrowRight"){bx=Math.min(W-24,bx+40);moveBasket();e.preventDefault();}
+  function startStorm(){
+    var k, d;
+    stormActive = true;
+    if(!rainMade){
+      rainMade = true;
+      for(k = 0; k < 46; k++){
+        d = document.createElement("i");
+        d.className = "rd";
+        d.style.left = (Math.random() * 100) + "%";
+        d.style.animationDuration = (.6 + Math.random() * .6) + "s";
+        d.style.animationDelay = "-" + (Math.random() * 1.2) + "s";
+        rainEl.appendChild(d);
+      }
+    }
+    document.body.classList.add("storm");
+    clearTimeout(stormT);
+    stormT = setTimeout(strike, 2500 + Math.random() * 2500);
+  }
+  function stopStorm(){
+    stormActive = false;
+    document.body.classList.remove("storm");
+    clearTimeout(stormT);
+  }
+  function strike(){
+    if(state !== "playing" || !stormActive){ stopStorm(); return; }
+    if(!(window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches))
+      bolt.animate([{opacity:0},{opacity:.7},{opacity:.05},{opacity:.5},{opacity:0}],{duration:450});
+    setTimeout(thunder, 300 + Math.random() * 500);
+    stormT = setTimeout(strike, 4500 + Math.random() * 5000);
+  }
+  function thunder(){
+    if(!actx) return;
+    try{
+      var len = Math.floor(actx.sampleRate * 1.6), buf = actx.createBuffer(1, len, actx.sampleRate), d = buf.getChannelData(0), k;
+      for(k = 0; k < len; k++) d[k] = (Math.random() * 2 - 1) * Math.pow(1 - k / len, 2);
+      var s = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain();
+      s.buffer = buf;
+      f.type = "lowpass";
+      f.frequency.value = 220;
+      g.gain.value = .7;
+      s.connect(f);
+      f.connect(g);
+      g.connect(master);
+      s.start();
+    }catch(e){}
+  }
+
+  function logChoice(choiceLabel){
+    userChoice = choiceLabel;
+    try{
+      localStorage.setItem("malmi_birthday_choice", JSON.stringify({
+        choice: choiceLabel,
+        timestamp: new Date().toISOString()
+      }));
+    }catch(e){}
+    if(WEBHOOK_URL){
+      try{
+        fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: {"Content-Type": "application/json", "Accept": "application/json"},
+          body: JSON.stringify({
+            name: "Malmi",
+            choice: choiceLabel,
+            timestamp: new Date().toISOString()
+          })
+        }).catch(function(){});
+      }catch(e){}
+    }
+  }
+
+  function eatCake(choiceType){
+    logChoice(choiceType);
+    state = "eaten";
+    card.hidden = true;
+    setUI("Nom nom nom 😋", "");
+    cake.classList.add("eat");
+    setTimeout(function(){
+      cake.hidden = true;
+      cake.classList.remove("eat");
+      $("ftitle").textContent = choiceType === "talk" ? "One last wish for you, Malmi" : "Goodbye & every blessing, Malmi";
+      $("ftext").textContent = choiceType === "talk" ? FINAL_TALK : FINAL_GOODBYE;
+      $("final").hidden = false;
+      confetti();
+    }, 1800);
+  }
+
+  function showWish(){
+    var isReq = i >= wishes.length;
+    wish.textContent = !isReq ? wishes[i] : REQUEST;
+    count.textContent = !isReq ? "Wish " + (i + 1) + " of " + wishes.length : "A humble request from my heart";
+    next.textContent = isReq ? "Okay, we'll talk 🤍" : (i === wishes.length - 1 ? "A humble request" : "Next wish");
+    altbtn.hidden = !isReq;
+    wish.classList.remove("swap");
+    void wish.offsetWidth;
+    wish.classList.add("swap");
+  }
+
+  act.addEventListener("click", function(){
+    initAudio();
+    if(state === "idle") startGame();
+    else if(state === "won") startBlow();
   });
-  window.addEventListener("hashchange",function(){
-    if(state==="done"){var n=name();title.textContent="Happy 20th Birthday"+(n?", "+n:"");}
+  blowbtn.addEventListener("pointerdown", blowTap);
+  blowbtn.addEventListener("keydown", function(e){ if((e.key === " " || e.key === "Enter") && !e.repeat) blowTap(e); });
+  blowbtn.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+
+  $("xretry").addEventListener("click", function(){
+    $("fail").hidden = true;
+    cake.classList.remove("blowing", "boom");
+    win(true);
+  });
+  $("fclose").addEventListener("click", function(){
+    var n = name();
+    $("final").hidden = true;
+    state = "done";
+    setUI("Happy 20th Birthday, " + n, userChoice === "talk" ? "Whenever you're ready, I'm here. 🤍" : "Wishing you every happiness always. 🤍");
+  });
+  next.addEventListener("click", function(){
+    if(i >= wishes.length){
+      eatCake("talk");
+      return;
+    }
+    i++;
+    showWish();
+  });
+  altbtn.addEventListener("click", function(){
+    eatCake("goodbye");
+  });
+
+  function pt(e){
+    if(state !== "playing") return;
+    bx = Math.max(24, Math.min(W - 24, e.clientX - arena.getBoundingClientRect().left));
+    moveBasket();
+    hintEl.hidden = true;
+  }
+  arena.addEventListener("pointermove", pt);
+  arena.addEventListener("pointerdown", pt);
+  document.addEventListener("keydown", function(e){
+    if(state !== "playing") return;
+    if(e.key === "ArrowLeft"){ bx = Math.max(24, bx - 40); moveBasket(); e.preventDefault(); }
+    if(e.key === "ArrowRight"){ bx = Math.min(W - 24, bx + 40); moveBasket(); e.preventDefault(); }
+  });
+  window.addEventListener("hashchange", function(){
+    if(state === "done"){ var n = name(); title.textContent = "Happy 20th Birthday, " + n; }
   });
 
   function confetti(){
-    if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
-    var c=$("fx"),x=c.getContext("2d"),d=window.devicePixelRatio||1;
-    c.width=innerWidth*d;c.height=innerHeight*d;x.scale(d,d);
-    var cols=["#e86f8e","#c59a3e","#f2a1b6","#fffaf6","#b3224f"],ps=[],t0=null,j;
-    for(j=0;j<160;j++){ps.push({x:innerWidth/2,y:innerHeight*.3,vx:(Math.random()-.5)*14,vy:-Math.random()*13-3,r:Math.random()*6,s:Math.random()*6+4,c:cols[j%cols.length]});}
+    if(window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    var c = $("fx"), x = c.getContext("2d"), d = window.devicePixelRatio || 1;
+    c.width = innerWidth * d;
+    c.height = innerHeight * d;
+    x.scale(d, d);
+    var cols = ["#e86f8e","#c59a3e","#f2a1b6","#fffaf6","#b3224f"], ps = [], t0 = null, j;
+    for(j = 0; j < 160; j++){
+      ps.push({x:innerWidth / 2,y:innerHeight * .3,vx:(Math.random() - .5) * 14,vy:-Math.random() * 13 - 3,r:Math.random() * 6,s:Math.random() * 6 + 4,c:cols[j % cols.length]});
+    }
     function frame(t){
-      if(!t0)t0=t;var e=t-t0;
-      x.clearRect(0,0,innerWidth,innerHeight);
+      if(!t0) t0 = t;
+      var e = t - t0;
+      x.clearRect(0, 0, innerWidth, innerHeight);
       ps.forEach(function(p){
-        p.vy+=.28;p.vx*=.992;p.x+=p.vx;p.y+=p.vy;p.r+=.15;
-        x.save();x.translate(p.x,p.y);x.rotate(p.r);x.globalAlpha=Math.max(0,1-e/4200);
-        x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore();
+        p.vy += .28;
+        p.vx *= .992;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.r += .15;
+        x.save();
+        x.translate(p.x, p.y);
+        x.rotate(p.r);
+        x.globalAlpha = Math.max(0, 1 - e / 4200);
+        x.fillStyle = p.c;
+        x.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+        x.restore();
       });
-      if(e<4200)requestAnimationFrame(frame);else x.clearRect(0,0,innerWidth,innerHeight);
+      if(e < 4200) requestAnimationFrame(frame);
+      else x.clearRect(0, 0, innerWidth, innerHeight);
     }
     requestAnimationFrame(frame);
   }
