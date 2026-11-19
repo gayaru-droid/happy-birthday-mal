@@ -60,9 +60,8 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .pop.up{color:var(--accent)}
 .pop.dn{color:#2f7fd1}
 .pa{position:absolute;font-size:.95rem;line-height:1;pointer-events:none;z-index:2}
-#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;background:rgba(18,8,40,.28);opacity:0;transition:opacity 1.5s}
-body.storm #rain{opacity:1}
-.rd{position:absolute;top:-30px;width:1.5px;height:22px;background:linear-gradient(transparent,rgba(170,195,255,.6));animation:rainfall linear infinite}
+#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2;background:rgba(18,8,40,.32);opacity:0;transition:opacity 1.2s ease-out}
+.rd{position:absolute;top:-30px;width:1.5px;height:22px;background:linear-gradient(transparent,rgba(170,195,255,.65));animation:rainfall linear infinite;opacity:var(--rop,.7)}
 @keyframes rainfall{to{transform:translateY(115vh)}}
 #bolt{position:fixed;inset:0;pointer-events:none;z-index:3;background:#eef2ff;opacity:0}
 .secret{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.25rem;letter-spacing:.06em;line-height:1.35;color:var(--accent);margin:0 0 .6rem;min-height:2.8em}
@@ -71,20 +70,35 @@ body.storm #rain{opacity:1}
 button.pill.alt{background:transparent;color:var(--ink);box-shadow:none}
 .btns{display:flex;flex-direction:column;align-items:center;gap:.65rem;width:100%}
 .btns button.pill{width:100%;max-width:21rem}
-#cake.eat{transform-origin:50% 70%;animation:eat 1.7s ease-in forwards}
-@keyframes eat{0%{transform:scale(1)}18%{transform:scale(1.25) translateY(-6px)}30%{transform:scale(1.1)}48%{transform:scale(1.6) translateY(-4px)}60%{transform:scale(1.4)}100%{transform:scale(3.4) translateY(30px);opacity:0}}
+
+/* Enhanced multi-bite cake eating animation & crumb particles */
+.cake-part{transition:opacity .28s ease-out, transform .28s cubic-bezier(.34,1.56,.64,1)}
+#cake.bite1 #cake-candles{opacity:0;transform:translateY(-14px) scale(.85)}
+#cake.bite2 #tier-top-group{opacity:0;transform:scale(.82) translateY(8px)}
+#cake.bite3 #tier-bottom-group{opacity:0;transform:scale(.85) translateY(10px)}
+#cake.bite4 #cake-plate{opacity:0;transform:scale(.7)}
+#cake.chomp{animation:chomp .36s cubic-bezier(.34,1.56,.64,1)}
+@keyframes chomp{
+  0%{transform:scale(1) rotate(0deg)}
+  35%{transform:scale(1.13) rotate(-3deg) translateY(-6px)}
+  70%{transform:scale(.94) rotate(2deg) translateY(2px)}
+  100%{transform:scale(1) rotate(0deg)}
+}
+.crumb{position:fixed;left:0;top:0;font-size:1.4rem;line-height:1;pointer-events:none;z-index:7}
+
 .modal{position:fixed;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(40,10,30,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .mbox{background:var(--bg1);border:1px solid var(--line);border-radius:1.5rem;padding:1.75rem 1.5rem 1.5rem;max-width:24rem;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:mpop .5s cubic-bezier(.2,1.2,.3,1);max-height:88vh;overflow-y:auto}
 @keyframes mpop{from{opacity:0;transform:scale(.85) translateY(12px)}to{opacity:1;transform:none}}
 .mbox h2{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:2rem;line-height:1.1;margin:0 0 .6rem}
 .mbox p{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.32rem;line-height:1.45;margin:0 0 1.25rem}
+.mbox .btns{margin-top:.25rem}
 #basket.bounce{animation:bounce .28s}
 #basket.hurt{animation:hurt .4s}
 @keyframes bounce{50%{scale:1.3}}
 @keyframes hurt{25%{rotate:-18deg}60%{rotate:14deg}}
 #flash{position:fixed;inset:0;pointer-events:none;z-index:6;background:radial-gradient(circle at 50% 35%,#ffd36b,#ff5a1f 45%,transparent 75%);opacity:0}
 canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9}
-@media (prefers-reduced-motion:reduce){.cd.on .f,#arena.shake,#wish.swap,#got.bad,#cake.boom,#cake.eat,.mbox,#basket.bounce,#basket.hurt,#hint{animation:none}.rd{display:none}#petals{display:none}}
+@media (prefers-reduced-motion:reduce){.cd.on .f,#arena.shake,#wish.swap,#got.bad,#cake.boom,#cake.chomp,.mbox,#basket.bounce,#basket.hurt,#hint{animation:none}.rd{display:none}#petals{display:none}}
 </style>
 </head>
 <body>
@@ -98,27 +112,33 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
 <main>
   <svg id="cake" viewBox="0 24 360 246" role="img" aria-label="Birthday cake with number candles 2 and 0">
     <defs><path id="hh" d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z"/></defs>
-    <ellipse cx="180" cy="252" rx="170" ry="13" fill="var(--plate)" stroke="var(--gold)" stroke-width="1"/>
-    <rect x="16" y="178" width="328" height="70" rx="16" fill="var(--tier2)"/>
-    <rect x="16" y="208" width="328" height="8" fill="var(--gold)" opacity=".9"/>
-    <line x1="32" y1="232" x2="328" y2="232" stroke="var(--frost)" stroke-width="6" stroke-linecap="round" stroke-dasharray="0.1 12"/>
-    <rect x="16" y="178" width="328" height="14" rx="7" fill="var(--frost)"/>
-    <rect x="44" y="148" width="272" height="38" rx="14" fill="var(--tier1)"/>
-    <g fill="var(--gold)"><use href="#hh" transform="translate(73 164) scale(.6)"/><use href="#hh" transform="translate(113 164) scale(.6)"/><use href="#hh" transform="translate(153 164) scale(.6)"/><use href="#hh" transform="translate(193 164) scale(.6)"/><use href="#hh" transform="translate(233 164) scale(.6)"/><use href="#hh" transform="translate(273 164) scale(.6)"/></g>
-    <rect x="44" y="140" width="272" height="22" rx="11" fill="var(--frost)"/>
-    <g class="cd" id="c0" transform="translate(142 152)">
-      <g fill="none" stroke-linejoin="round">
-        <path d="M-20 -58C-20 -84 20 -84 20 -58C20 -36 -20 -18 -20 -4L22 -4" stroke="var(--rose)" stroke-width="14" stroke-linecap="round"/>
-        <path d="M-20 -58C-20 -84 20 -84 20 -58C20 -36 -20 -18 -20 -4L22 -4" stroke="var(--frost)" stroke-width="14" stroke-dasharray="4 9" opacity=".5"/>
-      </g>
-      <g transform="translate(0 -86)"><rect x="-.8" y="-4" width="1.6" height="4" fill="var(--ink)"/><g class="f"><g transform="translate(0 -4) scale(1.4)"><path d="M0 -18c-6 9-5 17 0 18c5-1 6-9 0-18z" fill="var(--flame)"/><path d="M0 -9c-3 4-3 8 0 9c3-1 3-5 0-9z" fill="var(--flame-in)"/></g></g></g>
+    <ellipse id="cake-plate" class="cake-part" cx="180" cy="252" rx="170" ry="13" fill="var(--plate)" stroke="var(--gold)" stroke-width="1"/>
+    <g id="tier-bottom-group" class="cake-part">
+      <rect x="16" y="178" width="328" height="70" rx="16" fill="var(--tier2)"/>
+      <rect x="16" y="208" width="328" height="8" fill="var(--gold)" opacity=".9"/>
+      <line x1="32" y1="232" x2="328" y2="232" stroke="var(--frost)" stroke-width="6" stroke-linecap="round" stroke-dasharray="0.1 12"/>
+      <rect x="16" y="178" width="328" height="14" rx="7" fill="var(--frost)"/>
     </g>
-    <g class="cd" id="c1" transform="translate(218 152)">
-      <g fill="none">
-        <ellipse cx="0" cy="-40" rx="19" ry="36" stroke="var(--gold)" stroke-width="14"/>
-        <ellipse cx="0" cy="-40" rx="19" ry="36" stroke="var(--frost)" stroke-width="14" stroke-dasharray="4 9" opacity=".5"/>
+    <g id="tier-top-group" class="cake-part">
+      <rect x="44" y="148" width="272" height="38" rx="14" fill="var(--tier1)"/>
+      <g fill="var(--gold)"><use href="#hh" transform="translate(73 164) scale(.6)"/><use href="#hh" transform="translate(113 164) scale(.6)"/><use href="#hh" transform="translate(153 164) scale(.6)"/><use href="#hh" transform="translate(193 164) scale(.6)"/><use href="#hh" transform="translate(233 164) scale(.6)"/><use href="#hh" transform="translate(273 164) scale(.6)"/></g>
+      <rect x="44" y="140" width="272" height="22" rx="11" fill="var(--frost)"/>
+    </g>
+    <g id="cake-candles" class="cake-part">
+      <g class="cd" id="c0" transform="translate(142 152)">
+        <g fill="none" stroke-linejoin="round">
+          <path d="M-20 -58C-20 -84 20 -84 20 -58C20 -36 -20 -18 -20 -4L22 -4" stroke="var(--rose)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M-20 -58C-20 -84 20 -84 20 -58C20 -36 -20 -18 -20 -4L22 -4" stroke="var(--frost)" stroke-width="14" stroke-dasharray="4 9" opacity=".5"/>
+        </g>
+        <g transform="translate(0 -86)"><rect x="-.8" y="-4" width="1.6" height="4" fill="var(--ink)"/><g class="f"><g transform="translate(0 -4) scale(1.4)"><path d="M0 -18c-6 9-5 17 0 18c5-1 6-9 0-18z" fill="var(--flame)"/><path d="M0 -9c-3 4-3 8 0 9c3-1 3-5 0-9z" fill="var(--flame-in)"/></g></g></g>
       </g>
-      <g transform="translate(0 -83)"><rect x="-.8" y="-4" width="1.6" height="4" fill="var(--ink)"/><g class="f"><g transform="translate(0 -4) scale(1.4)"><path d="M0 -18c-6 9-5 17 0 18c5-1 6-9 0-18z" fill="var(--flame)"/><path d="M0 -9c-3 4-3 8 0 9c3-1 3-5 0-9z" fill="var(--flame-in)"/></g></g></g>
+      <g class="cd" id="c1" transform="translate(218 152)">
+        <g fill="none">
+          <ellipse cx="0" cy="-40" rx="19" ry="36" stroke="var(--gold)" stroke-width="14"/>
+          <ellipse cx="0" cy="-40" rx="19" ry="36" stroke="var(--frost)" stroke-width="14" stroke-dasharray="4 9" opacity=".5"/>
+        </g>
+        <g transform="translate(0 -83)"><rect x="-.8" y="-4" width="1.6" height="4" fill="var(--ink)"/><g class="f"><g transform="translate(0 -4) scale(1.4)"><path d="M0 -18c-6 9-5 17 0 18c5-1 6-9 0-18z" fill="var(--flame)"/><path d="M0 -9c-3 4-3 8 0 9c3-1 3-5 0-9z" fill="var(--flame-in)"/></g></g></g>
+      </g>
     </g>
   </svg>
 
@@ -154,6 +174,19 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   </section>
 </main>
 
+<!-- Confirmation modal for the goodbye option -->
+<div id="confirm-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="ctitle" hidden>
+  <div class="mbox">
+    <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
+    <h2 id="ctitle">Are you sure, Malmi?</h2>
+    <p>Once we say goodbye here, I will respect your silence and never bother you again. Are you certain you don't want to talk even once?</p>
+    <div class="btns">
+      <button class="pill" id="confirm-talk">Wait — let's talk 🤍</button>
+      <button class="pill alt" id="confirm-bye">Yes, I'm sure. Goodbye</button>
+    </div>
+  </div>
+</div>
+
 <div id="fail" class="modal" role="dialog" aria-modal="true" aria-labelledby="xtitle" hidden>
   <div class="mbox">
     <h2 id="xtitle">Boom! 🔥</h2>
@@ -177,19 +210,21 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   var WEBHOOK_URL = "https://formspree.io/f/xyewjlwk";
 
   var GOAL = 20;
+  /* Time (in seconds) over which weather & difficulty smoothly ramp from gentle breeze to full storm */
+  var RAMP_DURATION = 42;
   var SECRET = "Ton sourire est magnifique — just one glimpse of it makes my whole world brighter.";
 
   var wishes = [
     "Malmi, from the very first moment I heard your voice and saw your smile, everything around me changed. I almost got lost in your eyes — they hold a warmth that words can never capture. May you keep blooming and growing more and more radiant with every passing year.",
     "What amazes me most is the beauty of your heart and soul. Your Methodist faith isn't just spoken — you truly walk with Jesus in how gracefully you accept every fate and face every challenge without ever blaming anyone. May God's grace always hold you close and guide every step you take.",
-    "As you step into this new chapter of your life, I wish you endless success in your higher education and every dream you carry in your heart. Someone as genuine, resilient, and kind as you deserves every blessing and triumph this world has to offer."
+    "As you begin this new chapter of your life, I genuinely hope your future journey brings you everything you've been working towards. May you find success in your studies, opportunities that help you grow, and the courage to pursue every dream you've held close. You deserve a future filled with happiness, meaningful achievements, and people who appreciate you for who you are."
   ];
 
-  var REQUEST = "As I have told you before, Malmi, I truly wanted to walk everywhere beside you for a thousand lifetimes. Waiting in silence hurts far more than you could ever imagine. Can we please talk about us now? Whatever your answer may be, even the hardest truth is gentler than living on false hope.";
+  var REQUEST = "Malmi, as I've told you before, I really did imagine a future where I could walk beside you through life. Maybe that was a little too much to hope for, but my feelings were genuine. Not knowing where I stand has been harder than I expected. If you're comfortable with it, I'd really like us to talk about what I told you before. I don't expect you to feel the same, and I'll respect whatever your answer is. I just think knowing the truth, whatever it may be, would help me finally move forward.";
 
-  var FINAL_TALK = "Thank you for giving us a moment to talk, Malmi. No matter where our conversation leads, I am endlessly grateful that you exist, and I wish you the happiest, brightest 20th birthday filled with love, faith, and every dream come true. 🤍";
+  var FINAL_TALK = "Thank you for giving me the chance to talk to you, Malmi. I honestly appreciate it more than I can properly express. Whatever comes out of our conversation, I'm glad I got the chance to be honest with you. I hope your 20th birthday brings you plenty of happiness, beautiful memories, peace in your heart, and the strength to make all the dreams you're carrying come true. Happy birthday. 🤍";
 
-  var FINAL_GOODBYE = "Even though saying goodbye hurts deeper than words can hold, I respect your heart and your peace above all else. Thank you for being the brightest memory of my days, Malmi. May Jesus always watch over you, may your studies and future shine with every success, and may your life be endlessly happy. Happy 20th birthday, always. 🤍";
+  var FINAL_GOODBYE = "Malmi, I won't pretend that saying goodbye is easy for me, because it isn't. But I respect your feelings, and I would never want my own to become a burden to you. Thank you for being someone who brought so much brightness into my life, even if our paths were never meant to continue together. I sincerely wish you happiness in everything that lies ahead. May Jesus always watch over you, guide you through your studies, and bless you with a life filled with peace, love, and beautiful moments. Happy 20th birthday. Take care of yourself. 🤍";
 
   var $ = function(id){ return document.getElementById(id); };
   var cake = $("cake"), game = $("game"), arena = $("arena"), basket = $("basket"),
@@ -199,9 +234,9 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
       glow = $("glow"), mute = $("mute");
   var c0 = $("c0"), c1 = $("c1");
   var state = "idle", i = 0, got = 0, lives = 3, items = [], W = 0, H = 0, bx = 0,
-      raf = 0, last = 0, spawnT = 0, bp = 0, bTimer = 0, bEnd = 0, bLast = 0;
+      raf = 0, last = 0, elapsed = 0, spawnT = 0, bp = 0, bTimer = 0, bEnd = 0, bLast = 0;
   var hintEl = $("hint"), rainEl = $("rain"), bolt = $("bolt"), secretEl = $("secret"),
-      hinted = false, stormActive = false, userChoice = "talk";
+      hinted = false, rainDrops = [], lightningActive = false, userChoice = "talk";
   var blowEl = $("blow"), bbar = $("bbar"), bt = $("bt"), blowbtn = $("blowbtn"), flash = $("flash");
 
   /* Floating petals */
@@ -278,6 +313,10 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   }
   function sfxHeart(n){ var f = 660 + n * 28; tone(f, 0, .16, "sine", .8); tone(f * 1.5, .07, .24, "sine", .6); }
   function sfxRain(){ tone(340, 0, .3, "triangle", .9, 100); tone(90, 0, .22, "sine", .9); }
+  function sfxBite(){
+    tone(220, 0, .09, "triangle", .75, 110);
+    tone(360, .05, .12, "sine", .55, 180);
+  }
   function rm(e){ return function(){ e.remove(); }; }
   function mk(cls, txt, x, y){
     var e = document.createElement("span");
@@ -359,32 +398,63 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   function clearItems(){ items.forEach(function(it){ it.el.remove(); }); items = []; }
   function moveBasket(){ basket.style.transform = "translateX(" + (bx - 21) + "px)"; }
 
-  function updateWeather(progress){
-    /* Seamlessly shift from clear sky -> light breeze -> storm as hearts approach 20 */
-    if(progress < 0.4){
+  /* Time-based continuous difficulty factor: 0.0 at t=0s -> 1.0 at t=RAMP_DURATION */
+  function getTimeIntensity(){
+    return Math.min(1, elapsed / RAMP_DURATION);
+  }
+
+  function updateWeatherByTime(intensity){
+    /* Smoothly darken sky & fade in raindrops proportionally to elapsed time */
+    var skyOpacity = Math.max(0, (intensity - 0.15) / 0.85) * 0.34;
+    rainEl.style.opacity = skyOpacity.toFixed(3);
+
+    var targetDrops = Math.floor(intensity * 52);
+    while(rainDrops.length < targetDrops){
+      var d = document.createElement("i");
+      d.className = "rd";
+      d.style.left = (Math.random() * 100) + "%";
+      d.style.animationDuration = (.55 + Math.random() * .55) + "s";
+      d.style.animationDelay = "-" + (Math.random() * 1.2) + "s";
+      d.style.setProperty("--rop", (0.35 + 0.45 * intensity).toFixed(2));
+      rainEl.appendChild(d);
+      rainDrops.push(d);
+    }
+
+    if(intensity < 0.3){
       rndEl.textContent = "Clear Skies ☀️";
-      if(stormActive) stopStorm();
-    } else if(progress < 0.7){
-      rndEl.textContent = "Wind Picking Up 🍃";
-      if(stormActive) stopStorm();
+    } else if(intensity < 0.65){
+      rndEl.textContent = "Breeze & Drizzle 🌦️";
     } else {
-      rndEl.textContent = "Storm Rolling In ⛈️";
-      if(!stormActive) startStorm();
+      rndEl.textContent = "Heavy Storm ⛈️";
+    }
+
+    /* Enable occasional lightning once storm intensity crosses 0.65 */
+    if(intensity >= 0.65 && !lightningActive){
+      lightningActive = true;
+      clearTimeout(stormT);
+      stormT = setTimeout(strike, 2200 + Math.random() * 2500);
     }
   }
 
+  function resetWeather(){
+    lightningActive = false;
+    clearTimeout(stormT);
+    rainEl.style.opacity = "0";
+    rainDrops.forEach(function(d){ d.remove(); });
+    rainDrops = [];
+  }
+
   function hud(){
-    var progress = got / GOAL;
-    updateWeather(progress);
+    var heartProgress = got / GOAL;
     gotEl.textContent = "Hearts " + got + " of " + GOAL;
     livesEl.textContent = "🕯️".repeat(lives);
-    bar.style.width = (progress * 100) + "%";
+    bar.style.width = (heartProgress * 100) + "%";
     showSecret();
-    glow.style.opacity = .06 + .24 * progress;
+    glow.style.opacity = .06 + .24 * heartProgress;
   }
 
   function setIdle(){
-    stopStorm();
+    resetWeather();
     cancelAnimationFrame(raf);
     clearInterval(bTimer);
     stopMusic();
@@ -392,7 +462,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     clearItems();
     lives = 3;
     blowEl.hidden = true;
-    cake.classList.remove("blowing", "boom");
+    cake.classList.remove("blowing", "boom", "bite1", "bite2", "bite3", "bite4", "chomp");
     noteEl.hidden = !noteEl.textContent;
     game.hidden = true;
     cake.hidden = false;
@@ -402,13 +472,13 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     glow.style.opacity = .06;
     setUI(
       "Catch 20 hearts to light your candles, Malmi",
-      "Slide your cake to catch falling hearts 💖 and dodge the rain 💧. As you get closer, the storm rolls in and the wind picks up.",
+      "Slide your cake to catch falling hearts 💖 and dodge the rain 💧. The longer the sky stays open, the stronger the wind and storm grow.",
       "Start"
     );
   }
 
   function startGame(){
-    stopStorm();
+    resetWeather();
     hintEl.hidden = hinted;
     if(!hintEl.hidden){
       hinted = true;
@@ -416,6 +486,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     }
     got = 0;
     lives = 3;
+    elapsed = 0;
     clearItems();
     noteEl.hidden = true;
     noteEl.textContent = "";
@@ -427,6 +498,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     moveBasket();
     state = "playing";
     setUI("Catch the hearts!", "");
+    updateWeatherByTime(0);
     hud();
     spawnT = .5;
     last = performance.now();
@@ -434,17 +506,17 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   }
 
   function spawn(){
-    var progress = got / GOAL;
-    /* Seamless difficulty ramp: heart ratio shifts from 60% -> 40%, speed increases smoothly, wind sway rises after 35% */
-    var heartProb = 0.60 - 0.20 * progress;
+    var intensity = getTimeIntensity();
+    /* Smooth time-based difficulty ramp: heart ratio shifts from 62% -> 38%, fall speed & wind sway grow continuously over time */
+    var heartProb = 0.62 - 0.24 * intensity;
     var heart = Math.random() < heartProb;
     var el = document.createElement("span");
     el.className = "it";
     el.textContent = heart ? "💖" : "💧";
     arena.appendChild(el);
 
-    var baseSpeed = 115 + 75 * progress + Math.random() * 28 + (heart ? 0 : 12 * progress);
-    var windSway = progress > 0.35 ? ((progress - 0.35) / 0.65) * 78 : 0;
+    var baseSpeed = 110 + 95 * intensity + Math.random() * 26 + (heart ? 0 : 14 * intensity);
+    var windSway = intensity * 85;
 
     items.push({
       el: el,
@@ -462,18 +534,21 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     if(state !== "playing") return;
     var dt = Math.min(.05, (t - last) / 1000 || 0), n, it;
     last = t;
-    var progress = got / GOAL;
+    elapsed += dt;
+
+    var intensity = getTimeIntensity();
+    updateWeatherByTime(intensity);
+
     spawnT -= dt;
     if(spawnT <= 0){
       spawn();
-      spawnT = (1.05 - 0.35 * progress) + Math.random() * .22;
+      spawnT = (1.05 - 0.38 * intensity) + Math.random() * .2;
     }
     for(n = items.length - 1; n >= 0; n--){
       it = items[n];
       it.age += dt;
       it.y += it.vy * dt;
-      it.x += Math.cos(it.age * 3 + it.ph) * it.sw * dt;
-      /* Keep drifting items inside arena bounds */
+      it.x += Math.cos(it.age * 2.8 + it.ph) * it.sw * dt;
       it.x = Math.max(8, Math.min(W - 40, it.x));
       it.el.style.transform = "translate(" + it.x + "px," + it.y + "px)";
 
@@ -509,7 +584,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   }
 
   function lose(){
-    stopStorm();
+    resetWeather();
     cancelAnimationFrame(raf);
     clearItems();
     state = "busy";
@@ -520,7 +595,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   }
 
   function win(again){
-    stopStorm();
+    resetWeather();
     noteEl.textContent = "A secret your hearts uncovered: “" + SECRET + "”";
     noteEl.hidden = false;
     cancelAnimationFrame(raf);
@@ -636,7 +711,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     confetti();
   }
 
-  var stormT = 0, rainMade = false;
+  var stormT = 0;
   function showSecret(){
     var L = SECRET.replace(/[^\p{L}]/gu, "").length, n = Math.round((got / GOAL) * L), k = 0, out = "";
     SECRET.split("").forEach(function(c){
@@ -645,35 +720,12 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     });
     secretEl.textContent = out;
   }
-  function startStorm(){
-    var k, d;
-    stormActive = true;
-    if(!rainMade){
-      rainMade = true;
-      for(k = 0; k < 46; k++){
-        d = document.createElement("i");
-        d.className = "rd";
-        d.style.left = (Math.random() * 100) + "%";
-        d.style.animationDuration = (.6 + Math.random() * .6) + "s";
-        d.style.animationDelay = "-" + (Math.random() * 1.2) + "s";
-        rainEl.appendChild(d);
-      }
-    }
-    document.body.classList.add("storm");
-    clearTimeout(stormT);
-    stormT = setTimeout(strike, 2500 + Math.random() * 2500);
-  }
-  function stopStorm(){
-    stormActive = false;
-    document.body.classList.remove("storm");
-    clearTimeout(stormT);
-  }
   function strike(){
-    if(state !== "playing" || !stormActive){ stopStorm(); return; }
+    if(state !== "playing" || !lightningActive){ return; }
     if(!(window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches))
       bolt.animate([{opacity:0},{opacity:.7},{opacity:.05},{opacity:.5},{opacity:0}],{duration:450});
     setTimeout(thunder, 300 + Math.random() * 500);
-    stormT = setTimeout(strike, 4500 + Math.random() * 5000);
+    stormT = setTimeout(strike, 4200 + Math.random() * 4800);
   }
   function thunder(){
     if(!actx) return;
@@ -715,20 +767,70 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     }
   }
 
+  function spawnCrumbs(yRatio){
+    if(window.matchMedia && matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    var r = cake.getBoundingClientRect();
+    var cx = r.left + r.width * 0.5;
+    var cy = r.top + r.height * yRatio;
+    var syms = ["🍰", "✨", "🍓", "💖"];
+    for(var k = 0; k < 9; k++){
+      var el = document.createElement("span");
+      el.className = "crumb";
+      el.textContent = syms[k % syms.length];
+      document.body.appendChild(el);
+      var a = -Math.PI * (0.15 + 0.7 * Math.random());
+      var dist = 45 + Math.random() * 85;
+      var dx = Math.cos(a) * dist;
+      var dy = Math.sin(a) * dist;
+      el.animate([
+        {transform: "translate(" + (cx - 10) + "px," + (cy - 10) + "px) scale(0.5)", opacity: 1},
+        {transform: "translate(" + (cx - 10 + dx) + "px," + (cy - 10 + dy + 28) + "px) rotate(" + ((Math.random() - .5) * 180) + "deg) scale(1.1)", opacity: 0}
+      ], {duration: 750 + Math.random() * 250, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards"}).onfinish = rm(el);
+    }
+  }
+
+  function triggerChomp(biteClass, yRatio, caption){
+    setUI(caption, "");
+    cake.classList.add(biteClass);
+    cake.classList.remove("chomp");
+    void cake.offsetWidth;
+    cake.classList.add("chomp");
+    sfxBite();
+    spawnCrumbs(yRatio);
+  }
+
   function eatCake(choiceType){
     logChoice(choiceType);
     state = "eaten";
     card.hidden = true;
-    setUI("Nom nom nom 😋", "");
-    cake.classList.add("eat");
+    cake.classList.remove("bite1", "bite2", "bite3", "bite4", "chomp");
+
+    /* Stage 1: Candles disappear */
+    triggerChomp("bite1", 0.25, "Chomp! 😋");
+
+    /* Stage 2: Top tier eaten */
+    setTimeout(function(){
+      triggerChomp("bite2", 0.50, "Mmm, so sweet! 🍰");
+    }, 550);
+
+    /* Stage 3: Bottom tier eaten */
+    setTimeout(function(){
+      triggerChomp("bite3", 0.75, "Nom nom nom… ✨");
+    }, 1100);
+
+    /* Stage 4: Plate cleared & final modal revealed */
+    setTimeout(function(){
+      triggerChomp("bite4", 0.90, "All gone! 💖");
+    }, 1650);
+
     setTimeout(function(){
       cake.hidden = true;
-      cake.classList.remove("eat");
+      cake.classList.remove("bite1", "bite2", "bite3", "bite4", "chomp");
       $("ftitle").textContent = choiceType === "talk" ? "One last wish for you, Malmi" : "Goodbye & every blessing, Malmi";
       $("ftext").textContent = choiceType === "talk" ? FINAL_TALK : FINAL_GOODBYE;
       $("final").hidden = false;
       confetti();
-    }, 1800);
+    }, 2200);
   }
 
   function showWish(){
@@ -770,7 +872,17 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     i++;
     showWish();
   });
+
+  /* Open the "Are you sure?" confirmation dialog when she selects the goodbye button */
   altbtn.addEventListener("click", function(){
+    $("confirm-modal").hidden = false;
+  });
+  $("confirm-talk").addEventListener("click", function(){
+    $("confirm-modal").hidden = true;
+    eatCake("talk");
+  });
+  $("confirm-bye").addEventListener("click", function(){
+    $("confirm-modal").hidden = true;
     eatCake("goodbye");
   });
 
