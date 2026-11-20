@@ -2,61 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>A birthday wish for you, Malmi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@400;500&display=swap">
 <style>
-:root{--bg1:#fff3f4;--bg2:#f6d3df;--ink:#4a1730;--muted:#8a5a6e;--card:rgba(255,251,248,.88);--accent:#b3224f;--accent-ink:#fff;--gold:#c59a3e;--line:rgba(197,154,62,.5);--rose:#e86f8e;--tier1:#f19db3;--tier2:#fbd3dc;--frost:#fffaf6;--plate:#ecc9d6;--flame:#ffa81f;--flame-in:#fff3b0;--petal:#f2a1b6;
+:root{--bg1:#fff3f4;--bg2:#f6d3df;--ink:#4a1730;--muted:#8a5a6e;--card:rgba(255,251,248,.92);--accent:#b3224f;--accent-ink:#fff;--gold:#c59a3e;--line:rgba(197,154,62,.5);--rose:#e86f8e;--tier1:#f19db3;--tier2:#fbd3dc;--frost:#fffaf6;--plate:#ecc9d6;--flame:#ffa81f;--flame-in:#fff3b0;--petal:#f2a1b6;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#2b1024;--bg2:#190a15;--ink:#fde9ef;--muted:#d3a8b9;--card:rgba(58,22,46,.82);--accent:#f0638a;--accent-ink:#2a0b1a;--gold:#e2bd68;--line:rgba(226,189,104,.45);--tier1:#d9738f;--tier2:#f2b7c6;--frost:#f9e6ea;--plate:#4a2440;--petal:#c8607f;color-scheme:dark}}
-:root[data-theme="dark"]{--bg1:#2b1024;--bg2:#190a15;--ink:#fde9ef;--muted:#d3a8b9;--card:rgba(58,22,46,.82);--accent:#f0638a;--accent-ink:#2a0b1a;--gold:#e2bd68;--line:rgba(226,189,104,.45);--tier1:#d9738f;--tier2:#f2b7c6;--frost:#f9e6ea;--plate:#4a2440;--petal:#c8607f;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#2b1024;--bg2:#190a15;--ink:#fde9ef;--muted:#d3a8b9;--card:rgba(58,22,46,.88);--accent:#f0638a;--accent-ink:#2a0b1a;--gold:#e2bd68;--line:rgba(226,189,104,.45);--tier1:#d9738f;--tier2:#f2b7c6;--frost:#f9e6ea;--plate:#4a2440;--petal:#c8607f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg1:#2b1024;--bg2:#190a15;--ink:#fde9ef;--muted:#d3a8b9;--card:rgba(58,22,46,.88);--accent:#f0638a;--accent-ink:#2a0b1a;--gold:#e2bd68;--line:rgba(226,189,104,.45);--tier1:#d9738f;--tier2:#f2b7c6;--frost:#f9e6ea;--plate:#4a2440;--petal:#c8607f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);overflow-x:hidden;width:100%}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}
-body{margin:0;min-height:100vh;background-color:var(--bg1);background-image:linear-gradient(165deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--ink);font-family:Jost,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;display:flex;justify-content:center;overflow-x:hidden}
+body{margin:0;width:100%;max-width:100vw;min-height:100vh;min-height:100dvh;background-color:var(--bg1);background-image:linear-gradient(165deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--ink);font-family:Jost,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;display:flex;justify-content:center;overflow-x:hidden}
+body.modal-open{overflow:hidden;position:fixed;width:100%}
 #glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 30%,var(--flame) 0,transparent 55%);opacity:.06;transition:opacity .6s}
 #petals{position:fixed;inset:0;pointer-events:none;overflow:hidden}
 .p{position:absolute;top:-24px;background:var(--petal);border-radius:100% 0 100% 0;opacity:.5;animation:drift linear infinite}
 @keyframes drift{from{transform:translate3d(0,0,0) rotate(0)}to{transform:translate3d(70px,112vh,0) rotate(540deg)}}
-#mute{position:fixed;top:0;right:0;z-index:5;background:none;border:0;font-size:1.3rem;cursor:pointer;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px 14px}
-main{position:relative;z-index:1;width:100%;max-width:30rem;padding:2rem 1.25rem 3rem;text-align:center;display:flex;flex-direction:column;align-items:center}
-#cake{display:block;width:min(100%,24rem);height:auto;overflow:visible}
+#mute{position:fixed;top:0;right:0;z-index:5;background:none;border:0;font-size:1.3rem;cursor:pointer;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px 14px;touch-action:manipulation}
+main{position:relative;z-index:1;width:100%;max-width:30rem;padding:1.5rem 1rem 2.75rem;text-align:center;display:flex;flex-direction:column;align-items:center}
+#cake{display:block;width:min(100%,21rem);height:auto;overflow:visible}
 .cd .f{display:none;transform-box:fill-box;transform-origin:50% 100%}
 .cd.on .f{display:block;animation:flick 1.3s ease-in-out infinite alternate}
 @keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.9,1.1) rotate(3deg)}}
-h1{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-style:italic;font-weight:600;font-size:clamp(2.2rem,10vw,3.2rem);line-height:1.05;margin:1.25rem 0 .6rem}
-.sub{margin:0;color:var(--muted);max-width:24rem}
+h1{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-style:italic;font-weight:600;font-size:clamp(1.85rem,8vw,3rem);line-height:1.1;margin:1rem 0 .55rem;overflow-wrap:break-word;word-break:break-word;max-width:100%}
+.sub{margin:0;color:var(--muted);max-width:24rem;width:100%;font-size:clamp(.92rem,3.8vw,1.05rem);padding:0 .25rem;overflow-wrap:break-word}
 #game{width:100%}
-.hud{display:flex;justify-content:space-between;align-items:center;font-weight:500;font-size:.95rem;margin:0 0 .5rem}
+.hud{display:flex;justify-content:space-between;align-items:center;font-weight:500;font-size:clamp(.82rem,3.5vw,.95rem);margin:0 0 .5rem;gap:.35rem}
 #got.bad{animation:bad .35s}
 @keyframes bad{50%{color:var(--accent);transform:scale(1.2)}}
 .bar{height:6px;border-radius:99px;background:var(--plate);overflow:hidden;margin-bottom:.6rem}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .15s}
-#arena{position:relative;width:100%;height:min(52vh,24rem);background:linear-gradient(180deg,var(--card),transparent 120%);border:1px solid var(--line);border-radius:1.5rem;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+#arena{position:relative;width:100%;height:min(48dvh,22rem);background:linear-gradient(180deg,var(--card),transparent 120%);border:1px solid var(--line);border-radius:1.35rem;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
 #arena.shake{animation:shake .3s}
 @keyframes shake{25%{transform:translateX(-6px)}60%{transform:translateX(5px)}}
-.it{position:absolute;left:0;top:0;font-size:1.9rem;line-height:1;pointer-events:none;will-change:transform}
-#basket{position:absolute;left:0;bottom:6px;font-size:2.6rem;line-height:1;pointer-events:none}
-.row{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:1.25rem}
-button.pill,a.pill{font:inherit;font-weight:500;letter-spacing:.02em;background:var(--accent);color:var(--accent-ink);border:1px solid var(--gold);border-radius:999px;padding:.75rem 1.8rem;cursor:pointer;box-shadow:0 4px 18px rgba(179,34,79,.25);transition:transform .1s, opacity .2s}
+.it{position:absolute;left:0;top:0;font-size:1.85rem;line-height:1;pointer-events:none;will-change:transform}
+#basket{position:absolute;left:0;bottom:6px;font-size:2.5rem;line-height:1;pointer-events:none}
+.row{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:1.15rem;width:100%}
+button.pill,a.pill{font:inherit;font-weight:500;font-size:clamp(.88rem,3.6vw,1rem);line-height:1.35;letter-spacing:.01em;background:var(--accent);color:var(--accent-ink);border:1px solid var(--gold);border-radius:999px;padding:.75rem 1.35rem;min-height:46px;cursor:pointer;box-shadow:0 4px 18px rgba(179,34,79,.25);transition:transform .1s, opacity .2s;touch-action:manipulation;display:inline-flex;align-items:center;justify-content:center;text-align:center;max-width:100%;white-space:normal;overflow-wrap:break-word}
 button.pill:active{transform:scale(.97)}
 button.link{font:inherit;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:.4rem}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:1.5rem;padding:1.4rem 1.5rem 1.25rem;margin-top:1.5rem;width:100%;box-shadow:0 10px 36px rgba(120,30,70,.14)}
-.orn{width:22px;height:20px;margin:0 auto .6rem;display:block}
-#wish{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.48;margin:0 0 1rem;min-height:11em;display:flex;align-items:center;justify-content:center}
+
+/* Wish Card & Note Popups */
+.card{background:var(--card);border:1px solid var(--line);border-radius:1.35rem;padding:1.2rem 1rem 1.15rem;margin-top:1.15rem;width:100%;box-shadow:0 10px 36px rgba(120,30,70,.14)}
+.orn{width:20px;height:18px;margin:0 auto .5rem;display:block}
+#wish{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(1.12rem,4.5vw,1.32rem);line-height:1.48;margin:0 0 .9rem;min-height:8.5em;display:flex;align-items:center;justify-content:center;overflow-wrap:break-word;word-break:break-word}
 #wish.swap{animation:swap .5s ease-out}
 @keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.count{font-size:.85rem;color:var(--muted);margin:0 0 .9rem}
-.note{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.38;background:var(--card);border:1px solid var(--line);border-radius:1.25rem;padding:1rem 1.25rem;margin:1.1rem 0 0;max-width:24rem}
-#blow{width:100%;margin-top:1.1rem}
-#blowbtn{font:inherit;font-weight:500;font-size:1.15rem;width:7.5rem;height:7.5rem;border-radius:50%;background:var(--accent);color:var(--accent-ink);border:2px solid var(--gold);box-shadow:0 8px 26px rgba(179,34,79,.3);cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .06s}
+.count{font-size:.82rem;color:var(--muted);margin:0 0 .8rem}
+.note{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(1.08rem,4.3vw,1.25rem);line-height:1.4;background:var(--card);border:1px solid var(--line);border-radius:1.2rem;padding:.85rem 1rem;margin:.9rem 0 0;width:100%;max-width:24rem;box-shadow:0 6px 22px rgba(120,30,70,.1);overflow-wrap:break-word}
+
+#blow{width:100%;margin-top:1rem}
+#blowbtn{font:inherit;font-weight:500;font-size:1.15rem;width:7rem;height:7rem;border-radius:50%;background:var(--accent);color:var(--accent-ink);border:2px solid var(--gold);box-shadow:0 8px 26px rgba(179,34,79,.3);cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform .06s}
 #blowbtn:active{transform:scale(.92)}
 #cake.blowing .cd.on .f{animation:none;transform:rotate(calc(var(--b,0)*22deg)) scale(calc(1 - var(--b,0)*.45),calc(1 - var(--b,0)*.25));transition:transform .1s}
 #cake.boom{animation:blast 1.1s ease-in forwards}
 @keyframes blast{0%{transform:none}15%{transform:scale(1.06) rotate(-2deg)}30%{transform:scale(.97) rotate(2deg)}100%{transform:scale(1.6);opacity:0;filter:blur(6px)}}
 .fx2{position:fixed;left:0;top:0;font-size:2rem;line-height:1;pointer-events:none;z-index:7}
-.pop{position:absolute;font-weight:500;font-size:1.15rem;pointer-events:none;z-index:2;white-space:nowrap}
+.pop{position:absolute;font-weight:600;font-size:clamp(1rem,4vw,1.15rem);pointer-events:none;z-index:2;white-space:nowrap;text-shadow:0 1px 4px rgba(255,255,255,.65)}
 .pop.up{color:var(--accent)}
 .pop.dn{color:#2f7fd1}
 .pa{position:absolute;font-size:.95rem;line-height:1;pointer-events:none;z-index:2}
@@ -64,11 +68,11 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 .rd{position:absolute;top:-30px;width:1.5px;height:22px;background:linear-gradient(transparent,rgba(170,195,255,.65));animation:rainfall linear infinite;opacity:var(--rop,.7)}
 @keyframes rainfall{to{transform:translateY(115vh)}}
 #bolt{position:fixed;inset:0;pointer-events:none;z-index:3;background:#eef2ff;opacity:0}
-.secret{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.25rem;letter-spacing:.06em;line-height:1.35;color:var(--accent);margin:0 0 .6rem;min-height:2.8em}
-#hint{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);width:80%;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:1.4rem;line-height:1.3;color:var(--muted);pointer-events:none;animation:hintp 1.6s ease-in-out infinite alternate}
+.secret{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(1.02rem,4vw,1.22rem);letter-spacing:.04em;line-height:1.35;color:var(--accent);margin:0 0 .5rem;min-height:2.6em;padding:0 .25rem;overflow-wrap:break-word}
+#hint{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);width:86%;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:clamp(1.15rem,4.6vw,1.38rem);line-height:1.3;color:var(--muted);pointer-events:none;animation:hintp 1.6s ease-in-out infinite alternate}
 @keyframes hintp{to{opacity:.4}}
-button.pill.alt{background:transparent;color:var(--ink);box-shadow:none}
-.btns{display:flex;flex-direction:column;align-items:center;gap:.65rem;width:100%}
+button.pill.alt{background:transparent;color:var(--ink);box-shadow:none;border-radius:1.15rem;padding:.7rem 1rem}
+.btns{display:flex;flex-direction:column;align-items:center;gap:.6rem;width:100%}
 .btns button.pill{width:100%;max-width:21rem}
 
 /* Enhanced multi-bite cake eating animation & crumb particles */
@@ -86,18 +90,87 @@ button.pill.alt{background:transparent;color:var(--ink);box-shadow:none}
 }
 .crumb{position:fixed;left:0;top:0;font-size:1.4rem;line-height:1;pointer-events:none;z-index:7}
 
-.modal{position:fixed;inset:0;z-index:8;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:rgba(40,10,30,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.mbox{background:var(--bg1);border:1px solid var(--line);border-radius:1.5rem;padding:1.75rem 1.5rem 1.5rem;max-width:24rem;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:mpop .5s cubic-bezier(.2,1.2,.3,1);max-height:88vh;overflow-y:auto}
-@keyframes mpop{from{opacity:0;transform:scale(.85) translateY(12px)}to{opacity:1;transform:none}}
-.mbox h2{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:2rem;line-height:1.1;margin:0 0 .6rem}
-.mbox p{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:1.32rem;line-height:1.45;margin:0 0 1.25rem}
-.mbox .btns{margin-top:.25rem}
+/* Mobile-First Modal / Popup System */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  height:100dvh;
+  z-index:99;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+  background:rgba(40,10,30,.66);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  overflow:hidden;
+}
+.mbox{
+  position:relative;
+  background:var(--bg1);
+  border:1px solid var(--line);
+  border-radius:1.35rem;
+  padding:1.35rem 1.15rem 1.25rem;
+  width:min(100%, 23rem);
+  max-width:100%;
+  max-height:calc(100dvh - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.42);
+  animation:mpop .4s cubic-bezier(.2,1.2,.3,1);
+  overflow:hidden;
+}
+.mbody{
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:0 .15rem;
+  margin-bottom:.85rem;
+  flex:1 1 auto;
+}
+@keyframes mpop{from{opacity:0;transform:scale(.92) translateY(12px)}to{opacity:1;transform:none}}
+.mbox h2{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-style:italic;
+  font-weight:600;
+  font-size:clamp(1.45rem,6.2vw,1.95rem);
+  line-height:1.15;
+  margin:0 0 .55rem;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+.mbox p{
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(1.06rem,4.3vw,1.26rem);
+  line-height:1.46;
+  margin:0;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+.mbox .mfoot{
+  flex-shrink:0;
+  width:100%;
+}
+.mbox .btns{margin-top:0;gap:.55rem}
+.mbox button.pill{width:100%;max-width:100%}
+
 #basket.bounce{animation:bounce .28s}
 #basket.hurt{animation:hurt .4s}
 @keyframes bounce{50%{scale:1.3}}
 @keyframes hurt{25%{rotate:-18deg}60%{rotate:14deg}}
 #flash{position:fixed;inset:0;pointer-events:none;z-index:6;background:radial-gradient(circle at 50% 35%,#ffd36b,#ff5a1f 45%,transparent 75%);opacity:0}
-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100}
+@media (max-width:380px){
+  main{padding:1.15rem .75rem 2.25rem}
+  .mbox{padding:1.15rem .95rem 1.05rem;border-radius:1.2rem}
+  .card{padding:1.05rem .9rem 1rem;border-radius:1.2rem}
+}
 @media (prefers-reduced-motion:reduce){.cd.on .f,#arena.shake,#wish.swap,#got.bad,#cake.boom,#cake.chomp,.mbox,#basket.bounce,#basket.hurt,#hint{animation:none}.rd{display:none}#petals{display:none}}
 </style>
 </head>
@@ -177,30 +250,42 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
 <!-- Confirmation modal for the goodbye option -->
 <div id="confirm-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="ctitle" hidden>
   <div class="mbox">
-    <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
-    <h2 id="ctitle">Are you sure, Malmi?</h2>
-    <p>Once we say goodbye here, I will respect your silence and never bother you again. Are you certain you don't want to talk even once?</p>
-    <div class="btns">
-      <button class="pill" id="confirm-talk">Wait — let's talk 🤍</button>
-      <button class="pill alt" id="confirm-bye">Yes, I'm sure. Goodbye</button>
+    <div class="mbody">
+      <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
+      <h2 id="ctitle">Are you sure, Malmi?</h2>
+      <p>Once we say goodbye here, I will respect your silence and never bother you again. Are you certain you don't want to talk even once?</p>
+    </div>
+    <div class="mfoot">
+      <div class="btns">
+        <button class="pill" id="confirm-talk">Wait — let's talk 🤍</button>
+        <button class="pill alt" id="confirm-bye">Yes, I'm sure. Goodbye</button>
+      </div>
     </div>
   </div>
 </div>
 
 <div id="fail" class="modal" role="dialog" aria-modal="true" aria-labelledby="xtitle" hidden>
   <div class="mbox">
-    <h2 id="xtitle">Boom! 🔥</h2>
-    <p id="xtext"></p>
-    <button class="pill" id="xretry">Try again</button>
+    <div class="mbody">
+      <h2 id="xtitle">Boom! 🔥</h2>
+      <p id="xtext"></p>
+    </div>
+    <div class="mfoot">
+      <button class="pill" id="xretry">Try again</button>
+    </div>
   </div>
 </div>
 
 <div id="final" class="modal" role="dialog" aria-modal="true" aria-labelledby="ftitle" hidden>
   <div class="mbox">
-    <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
-    <h2 id="ftitle">One last wish</h2>
-    <p id="ftext"></p>
-    <button class="pill" id="fclose">Close</button>
+    <div class="mbody">
+      <svg class="orn" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21C-4 9 4-2 12 6C20-2 28 9 12 21z" fill="var(--gold)"/></svg>
+      <h2 id="ftitle">One last wish</h2>
+      <p id="ftext"></p>
+    </div>
+    <div class="mfoot">
+      <button class="pill" id="fclose">Close</button>
+    </div>
   </div>
 </div>
 
@@ -238,6 +323,25 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   var hintEl = $("hint"), rainEl = $("rain"), bolt = $("bolt"), secretEl = $("secret"),
       hinted = false, rainDrops = [], lightningActive = false, userChoice = "talk";
   var blowEl = $("blow"), bbar = $("bbar"), bt = $("bt"), blowbtn = $("blowbtn"), flash = $("flash");
+
+  var savedScrollY = 0;
+  function setModalOpen(el, open){
+    el.hidden = !open;
+    var anyOpen = !$("confirm-modal").hidden || !$("fail").hidden || !$("final").hidden;
+    if(anyOpen && !document.body.classList.contains("modal-open")){
+      savedScrollY = window.scrollY || 0;
+      document.body.style.top = "-" + savedScrollY + "px";
+      document.body.classList.add("modal-open");
+    } else if(!anyOpen && document.body.classList.contains("modal-open")){
+      document.body.classList.remove("modal-open");
+      document.body.style.top = "";
+      window.scrollTo(0, savedScrollY);
+    }
+    if(open){
+      var mb = el.querySelector(".mbody");
+      if(mb) mb.scrollTop = 0;
+    }
+  }
 
   /* Floating petals */
   var pw = $("petals"), q, s;
@@ -322,7 +426,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     var e = document.createElement("span");
     e.className = cls;
     e.textContent = txt;
-    e.style.left = x + "px";
+    e.style.left = Math.max(24, Math.min(W - 24, x)) + "px";
     e.style.top = y + "px";
     arena.appendChild(e);
     return e;
@@ -332,10 +436,10 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     basket.classList.remove("bounce", "hurt");
     void basket.offsetWidth;
     basket.classList.add(heart ? "bounce" : "hurt");
-    var e = mk(heart ? "pop up" : "pop dn", heart ? "+1" : "\u22121", x, y - 8), k, p, a, dx, dy;
+    var e = mk(heart ? "pop up" : "pop dn", heart ? "+1" : "−1", x, y - 8), k, p, a, dx, dy;
     e.animate([{transform:"translate(-50%,0)",opacity:1},{transform:"translate(-50%,-54px)",opacity:0}],{duration:850,easing:"ease-out"}).onfinish = rm(e);
     for(k = 0; k < (heart ? 7 : 10); k++){
-      p = mk("pa", heart ? (k % 3 ? "\ud83d\udc96" : "\u2728") : "\ud83d\udca7", x, y);
+      p = mk("pa", heart ? (k % 3 ? "💖" : "✨") : "💧", x, y);
       a = -Math.PI * (.08 + .84 * Math.random());
       dx = Math.cos(a) * (26 + Math.random() * 40);
       dy = Math.sin(a) * (26 + Math.random() * 40);
@@ -404,7 +508,6 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   }
 
   function updateWeatherByTime(intensity){
-    /* Smoothly darken sky & fade in raindrops proportionally to elapsed time */
     var skyOpacity = Math.max(0, (intensity - 0.15) / 0.85) * 0.34;
     rainEl.style.opacity = skyOpacity.toFixed(3);
 
@@ -428,7 +531,6 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
       rndEl.textContent = "Heavy Storm ⛈️";
     }
 
-    /* Enable occasional lightning once storm intensity crosses 0.65 */
     if(intensity >= 0.65 && !lightningActive){
       lightningActive = true;
       clearTimeout(stormT);
@@ -507,7 +609,6 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
 
   function spawn(){
     var intensity = getTimeIntensity();
-    /* Smooth time-based difficulty ramp: heart ratio shifts from 62% -> 38%, fall speed & wind sway grow continuously over time */
     var heartProb = 0.62 - 0.24 * intensity;
     var heart = Math.random() < heartProb;
     var el = document.createElement("span");
@@ -687,7 +788,11 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
       flash.animate([{opacity:0},{opacity:.85},{opacity:0}],{duration:900,easing:"ease-out"});
       for(k = 0; k < 34; k++) spark(r.left + r.width / 2, r.top + r.height * .55, k % 6 === 0);
     }
-    setTimeout(function(){ $("xtext").textContent = MSGS[Math.min(blowFails, MSGS.length - 1)]; blowFails++; $("fail").hidden = false; }, 1700);
+    setTimeout(function(){
+      $("xtext").textContent = MSGS[Math.min(blowFails, MSGS.length - 1)];
+      blowFails++;
+      setModalOpen($("fail"), true);
+    }, 1700);
   }
   function blowAll(){
     state = "busy";
@@ -828,7 +933,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
       cake.classList.remove("bite1", "bite2", "bite3", "bite4", "chomp");
       $("ftitle").textContent = choiceType === "talk" ? "One last wish for you, Malmi" : "Goodbye & every blessing, Malmi";
       $("ftext").textContent = choiceType === "talk" ? FINAL_TALK : FINAL_GOODBYE;
-      $("final").hidden = false;
+      setModalOpen($("final"), true);
       confetti();
     }, 2200);
   }
@@ -854,13 +959,13 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
   blowbtn.addEventListener("contextmenu", function(e){ e.preventDefault(); });
 
   $("xretry").addEventListener("click", function(){
-    $("fail").hidden = true;
+    setModalOpen($("fail"), false);
     cake.classList.remove("blowing", "boom");
     win(true);
   });
   $("fclose").addEventListener("click", function(){
     var n = name();
-    $("final").hidden = true;
+    setModalOpen($("final"), false);
     state = "done";
     setUI("Happy 20th Birthday, " + n, userChoice === "talk" ? "Whenever you're ready, I'm here. 🤍" : "Wishing you every happiness always. 🤍");
   });
@@ -875,14 +980,14 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
 
   /* Open the "Are you sure?" confirmation dialog when she selects the goodbye button */
   altbtn.addEventListener("click", function(){
-    $("confirm-modal").hidden = false;
+    setModalOpen($("confirm-modal"), true);
   });
   $("confirm-talk").addEventListener("click", function(){
-    $("confirm-modal").hidden = true;
+    setModalOpen($("confirm-modal"), false);
     eatCake("talk");
   });
   $("confirm-bye").addEventListener("click", function(){
-    $("confirm-modal").hidden = true;
+    setModalOpen($("confirm-modal"), false);
     eatCake("goodbye");
   });
 
@@ -898,6 +1003,14 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     if(state !== "playing") return;
     if(e.key === "ArrowLeft"){ bx = Math.max(24, bx - 40); moveBasket(); e.preventDefault(); }
     if(e.key === "ArrowRight"){ bx = Math.min(W - 24, bx + 40); moveBasket(); e.preventDefault(); }
+  });
+  window.addEventListener("resize", function(){
+    if(state === "playing"){
+      W = arena.clientWidth;
+      H = arena.clientHeight;
+      bx = Math.max(24, Math.min(W - 24, bx));
+      moveBasket();
+    }
   });
   window.addEventListener("hashchange", function(){
     if(state === "done"){ var n = name(); title.textContent = "Happy 20th Birthday, " + n; }
