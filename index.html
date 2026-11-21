@@ -931,7 +931,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     setTimeout(function(){
       cake.hidden = true;
       cake.classList.remove("bite1", "bite2", "bite3", "bite4", "chomp");
-      var isTalk = (choiceType === "talk" || choiceType === "talk_after_second_thought");
+      var isTalk = (choiceType === "talk" || choiceType === "talk2");
       $("ftitle").textContent = isTalk ? "One last wish for you, Malmi" : "Goodbye & every blessing, Malmi";
       $("ftext").textContent = isTalk ? FINAL_TALK : FINAL_GOODBYE;
       setModalOpen($("final"), true);
@@ -968,7 +968,8 @@ canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index
     var n = name();
     setModalOpen($("final"), false);
     state = "done";
-    setUI("Happy 20th Birthday, " + n, userChoice === "talk" ? "Whenever you're ready, I'm here. 🤍" : "Wishing you every happiness always. 🤍");
+    var isTalk = (userChoice === "talk" || userChoice === "talk2");
+    setUI("Happy 20th Birthday, " + n, isTalk ? "Whenever you're ready, I'm here. 🤍" : "Wishing you every happiness always. 🤍");
   });
   next.addEventListener("click", function(){
     if(i >= wishes.length){
